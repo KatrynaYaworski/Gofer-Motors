@@ -1,0 +1,48 @@
+.completeInventory {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.advancedTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: rgb(200, 177, 109);
+    text-align: center;
+}
+
+.advancedSearch {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.advancedSearch input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.advancedSearch button.advancedBtn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.advancedSearch button.advancedBtn:hover {
+    background-color: #0056b3;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
