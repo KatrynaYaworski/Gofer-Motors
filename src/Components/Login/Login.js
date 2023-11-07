@@ -29,6 +29,7 @@ const Login = ({ closeModal }) => {
       .post(register ? "http://localhost:4000/register" : "http://localhost:4000/login", body)
       .then((res) => {
         dispatch({ type: "LOGIN", payload: res.data });
+        console.log(res.data)
         closeModal();
       })
       .catch((err) => {
@@ -38,7 +39,6 @@ const Login = ({ closeModal }) => {
 
     console.log("submitHandler called");
   };
-  console.log({ state })
   return (
     <main>
       <h2 className={styles.login_header}>{register ? "Create an account" : "Sign in to Gofer Motors"}</h2>

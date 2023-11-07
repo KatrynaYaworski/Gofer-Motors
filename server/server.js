@@ -18,35 +18,29 @@ app.use(express.static('public'));
 
 //endpoints
 const {
-    seed,
-    getCar,
+    getInventory,
     getReviews,
-    // createAccount,
-    createAppointment
+    createAppointment,
+    getUserAdmin,
+    sellCar,
+    addCar
 } = require('./controllers/controller.js');
+
+const  {seed } = require('./controllers/seed.js');
 
 const { login, register } = require('./controllers/auth.js');
 
-
-// const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: 'YOUR_GMAIL@gmail.com',
-//         pass: 'YOUR_PASSWORD'
-//     }
-// });
-
-app.get("/car_listing", getCar);
+app.get("/car_inventory", getInventory);
 app.get("/user_reviews", getReviews);
+app.get("/users/:username", getUserAdmin)
 
 app.post('/seed', seed);
 app.post("/register", register);
 app.post("/login", login);
 app.post("/contact_information", createAppointment)
+app.post("/car_inventory", addCar)
 
-// app.post("/authentication", createAccount)
-    
-
+app.put("/car_inventory/:carId", sellCar)
 
 
 const PORT = process.env.SERVER_PORT;

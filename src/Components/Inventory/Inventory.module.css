@@ -9,7 +9,7 @@
 .advancedTitle {
     font-size: 24px;
     margin-bottom: 20px;
-    color: rgb(200, 177, 109);
+    color: #d6a30bd0;
     text-align: center;
 }
 
@@ -43,6 +43,11 @@
 
 .cardContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+
+/* Add Inventory Form */
+
+

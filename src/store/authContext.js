@@ -5,7 +5,8 @@ const initialState = {
   token: null,
   exp: null,
   username: null,
-  userPending: false
+  userPending: false,
+  isadmin: false
 };
 
 const AuthContext = createContext();
@@ -15,6 +16,7 @@ const getLocalData = () => {
   const storedExp = localStorage.getItem("exp");
   const storedId = localStorage.getItem("userId");
   const storedName = localStorage.getItem("username");
+  const storedAdmin = localStorage.getItem("isadmin");
 
   let remainingTime = storedExp - new Date().getTime()
   if(remainingTime < 0) {
@@ -26,7 +28,8 @@ const getLocalData = () => {
     token: storedToken,
     exp: storedExp,
     userId: storedId,
-    username: storedName
+    username: storedName,
+    isadmin: storedAdmin
   };
 };
 
@@ -36,18 +39,19 @@ const AuthContextProvider = (props) => {
       case "LOGIN_PENDING":
         return { ...state, userPending: true}
       case "LOGIN":
-        let { token, exp, userId, username } = action.payload;
+        let { token, exp, userId, username, isadmin } = action.payload;
         localStorage.setItem("token", token);
         localStorage.setItem("exp", exp);
         localStorage.setItem("userId", userId);
         localStorage.setItem("username", username);
-        return { ...state, token, exp, userId, username };
+        localStorage.setItem("isadmin", isadmin);
+        return { ...state, token, exp, userId, username, isadmin };
       case "LOGOUT":
         localStorage.clear();
         return initialState;
       case "RETURNING_USER":
-        let { token: t, userId: u, exp: e, username: n } = action.payload;
-        return { ...state, token: t, userId: +u, exp: +e, username: n };
+        let { token: t, userId: u, exp: e, username: n, isadmin: a } = action.payload;
+        return { ...state, token: t, userId: +u, exp: +e, username: n, isadmin: a };
       default:
         return state;
     }

@@ -9,7 +9,7 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Ford_Escape from "../ImageReel/Ford_Escape.jpg";
 import ContactCard from "../ContactCard/ContactCard";
-import heroVid from "../../assets/car_deal.mov"
+import heroVid from "../../assets/car_deal.mov";
 
 function Home() {
   return (
@@ -17,7 +17,7 @@ function Home() {
       <span className="hometitle">Discover Your Dream Car With Us</span>
 
       <div className="home_vid_container">
-        <video className="home_vid" src={heroVid} autoPlay muted></video>
+        <video className="home_vid" src={heroVid} autoPlay loop muted></video>
       </div>
 
       <div className="introduction_container">
@@ -42,7 +42,7 @@ function Home() {
         <ImageReel className="inventory_reel" />
 
         <div>
-          <Link to="/appointment" className="scheduleBtn">
+          <Link to="/appointment" className="scheduleBtnLink">
             <button className="scheduleBtn">Schedule a Test Drive</button>
           </Link>
         </div>
@@ -52,17 +52,15 @@ function Home() {
         <SearchBar />
       </div> */}
 
-
       <div className="reviewAndContact_container">
-    <div className="reviews_row">
-        <Review />
-    </div>
-    <div className="Home_contactCard">
-        <ContactCard />
-    </div>
-</div>
-
+        <div className="reviews_row">
+          <Review />
+        </div>
+        <div className="Home_contactCard">
+          <ContactCard />
+        </div>
       </div>
+    </div>
   );
 }
 

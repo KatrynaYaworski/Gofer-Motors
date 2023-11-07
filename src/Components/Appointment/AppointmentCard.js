@@ -16,10 +16,10 @@ function AppointmentCard () {
     });
 
     useEffect(() => {
-        axios.get("http://localhost:4000/car_listing")        
+        axios.get("http://localhost:4000/car_inventory")        
             .then(response => setCarListings(response.data)) 
             .catch(error => {
-                console.error("Error get request for car listings:", error.response.data);
+                console.error("Error get request for car inventory:", error.response.data);
             });
     }, []);
 

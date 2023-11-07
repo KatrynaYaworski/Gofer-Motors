@@ -9,7 +9,8 @@ import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import { BsFillGeoAltFill } from "react-icons/bs";
 import Modal from "../Modal/Modal";
 import AuthContext from "../../store/authContext";
-import Authentication from "../Login/Login";
+import Login from "../Login/Login"
+
 
 function Header() {
   const { state, dispatch } = useContext(AuthContext);
@@ -106,7 +107,7 @@ function Header() {
       <BsFillGeoAltFill/> 1703 N Tower Rd Alamo, Texas, United States        <PhoneAndroidIcon className="phoneIcon" fontSize="small" />(956) 258-5021
       </span>
       <Modal isOpen={isModalOpen} closeModal={closeModal}>
-          <Authentication className="nav_item" isOpen={isModalOpen} closeModal={closeModal}/>
+          <Login className="nav_item" isOpen={isModalOpen} closeModal={closeModal}/>
         </Modal>
       {/* <Link to="/authentication" style={{ textDecoration: "none" }}>
         <span className="header_login">Login</span>

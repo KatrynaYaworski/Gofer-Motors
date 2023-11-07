@@ -1,62 +1,125 @@
  .car_card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     background-color: #fff;
+     border: 1px solid #e0e0e0;
+     border-radius: 8px;
+     padding: 20px;
+     margin: 20px;
+     width: 300px;
+     box-shadow: rgba(0, 0, 0, .5) 4px 4px 20px;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
 
-.car_card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+ .car_card:hover {
+     transform: translateY(-10px);
+     box-shadow: rgba(0, 0, 0, 0.42) 0px 19px 43px;
+ }
 
-.carImageCard {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
+ .carImageCard {
+     width: 100%;
+     max-height: 200px;
+     object-fit: cover;
+     border-radius: 8px;
+     margin-bottom: 20px;
+ }
 
-.car_info {
-    display: flex;
-    flex-direction: column;
-   
-    width: 100%;
-}
+ .car_info {
+     display: flex;
+     flex-direction: column;
 
-.car_title {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-}
-.car_info p {
-    margin: 5px 0;
-    color: #333;
-}
+     width: 100%;
+ }
+
+ .car_title {
+     font-size: 18px;
+     font-weight: bold;
+     text-align: center;
+ }
+
+ .car_info p {
+     margin: 5px 0;
+     color: #333;
+ }
+
+ .add-inventory {
+     justify-content: center;
+     align-items: center;
+     padding: 10px 10px;
+     transition: all 0.3s;
+     border: #d6a30bd0;
+     background-color: #d6a30bd0;
+     color: rgb(255, 255, 255);
+     border-radius: 4px;
+     cursor: pointer;
+     font-size: medium;
+     font-weight: bold;
+     margin-left: 35px;
+ }
 
 
 
+ .interested {
+     background-color: #d6a30bd0;
+     color: #fff;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     margin-top: 20px;
+     transition: background-color 0.3s ease;
+ }
 
+ .interested:hover {
+     background-color: #0056b3;
+ }
 
-.interested {
-    background-color: #d6a30bd0;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
+ .delete-btn {
+     background-color: transparent;
+     border: none;
+     cursor: pointer;
+     height: 80px;
+ }
 
-.interested:hover {
-    background-color: #0056b3;
-}
+ .delete-btn:hover {
+     background-color: transparent;
+     border: none;
+     cursor: pointer;
+ }
+
+ .sold-img {
+     height: 50px;
+ }
+
+ .sold-img:hover {
+     height: 60px;
+ }
+
+ .edit-img {
+     height: 30px;
+ }
+
+ .edit-img:hover {
+     height: 40px;
+ }
+
+ .edit-btn {
+     background-color: transparent;
+     border: none;
+     cursor: pointer;
+     height: 80px;
+ }
+
+ .edit-btn:hover {
+     background-color: transparent;
+     border: none;
+     cursor: pointer;
+ }
+
+ .admin-btn-container {
+     margin: -25px 0px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }

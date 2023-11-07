@@ -4,10 +4,11 @@ const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 const { sequelize } = require("../util/database");
 
-const createToken = (username, id) => {
+const createToken = (username, isadmin, id) => {
   return jwt.sign(
     {
       username,
+      isadmin,
       id,
     },
     SECRET,
@@ -31,13 +32,13 @@ const login = async (req, res) => {
       const isAuthenticated = bcrypt.compareSync(password, foundUser.password);
 
       if (isAuthenticated) {
-        const token = createToken(foundUser.username, foundUser.isAdmin, foundUser.user_id);
+        const token = createToken(foundUser.username, foundUser.isadmin, foundUser.user_id);
         const exp = Date.now() + 1000 * 60 * 60 * 48;
         console.log(foundUser);
         const data = {
           username: foundUser.username,
+          isadmin: foundUser.isadmin,
           userId: foundUser.user_id,
-          isAdmin: foundUser.isAdmin,
           token: token,
           exp: exp,
         };
@@ -86,12 +87,11 @@ const register = async (req, res) => {
       `
       );
       const [newUser] = newUserArr;
-      const token = createToken(newUser.username, newUser.isAdmin, newUser.user_id);
+      const token = createToken(newUser.username, newUser.user_id);
       const exp = Date.now() + 1000 * 60 * 60 * 48;
 
       const data = {
         username: newUser.username,
-        isAdmin: newUser.isAdmin,
         userId: newUser.user_id,
         token: token,
         exp: exp,
@@ -111,12 +111,12 @@ const register = async (req, res) => {
         `
         );
         const [newUser] = newUserArr;
-        const token = createToken(newUser.username, newUser.user_id);
+        const token = createToken(newUser.username, newUser.isadmin, newUser.user_id);
         const exp = Date.now() + 1000 * 60 * 60 * 48;
   
         const data = {
           username: newUser.username,
-          isAdmin: newUser.isAdmin,
+          isadmin: newUser.isadmin,
           userId: newUser.user_id,
           token: token,
           exp: exp,

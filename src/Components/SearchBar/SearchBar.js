@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@mui/icons-material/Search";
+import AuthContext from "../../store/authContext";
 // import axios from "axios";
 
-function SearchBar({ model, year, make, setYear, setMake, setModel, cars }) {
+function SearchBar({
+  model,
+  year,
+  make,
+  setYear,
+  setMake,
+  setModel,
+  cars,
+  soldStatus,
+  setSoldStatus,
+}) {
+  const { state, dispatch } = useContext(AuthContext);
+
   // const handleSearch = () => {
 
   //   const params = {};
@@ -11,7 +24,7 @@ function SearchBar({ model, year, make, setYear, setMake, setModel, cars }) {
   // if(model) params.Model = model;
   // if(year) params.Year = year;
 
-  //   axios.get("http://localhost:4000/car_listing", {params})
+  //   axios.get("http://localhost:4000/car_inventory", {params})
   //     .then(response => {
   //       const filteredCars = response.data.filter(car =>
   //         (!make || car.make === make) &&
@@ -30,79 +43,191 @@ function SearchBar({ model, year, make, setYear, setMake, setModel, cars }) {
   console.log(`CARS+++++++${JSON.stringify(cars)}`);
 
   const yearsObj = {};
+  const makeObj = {};
+  const modelObj = {};
 
   return (
     <div className="search">
       <div className="searchContainer">
-        <h3 className="titleSearch">
-          What type of vehicle are you interested in?
-        </h3>
+        {state.isadmin || state.isadmin === "true" ? (
+          ""
+        ) : (
+          <h3 className="titleSearch">
+            {" "}
+            What type of vehicle are you interested in
+          </h3>
+        )}
       </div>
       <div className="input-container">
-    {/* <div className="make-input-container"> */}
-      <input
-        type="text"
-        placeholder="Make"
-        value={make}
-        onChange={(e) => setMake(e.target.value)}
-      />    
-      {/* <SearchIcon className="search_icon" /></div> */}
-      {/* <div className="model-input-container"> */}
-      <input
-        type="text"
-        placeholder="Model"
-        value={model}
-        onChange={(e) => setModel(e.target.value)}
-      />
-          {/* <SearchIcon className="search_icon" /></div> */}
+        {/* <div className="make-input-container"> */}
+        {state.isadmin || state.isadmin === "true" ? (
+          <span className="year-container">
+            <select
+              onChange={(e) => setMake(e.target.value)}
+              name="make"
+              value={make}
+              id="make"
+            >
+              <option value="">Select Make</option>
+              {cars
+                .filter((car) => {
+                  if (makeObj[car.make]) {
+                    return false;
+                  }
+                  makeObj[car.make] = true;
+                  return true;
+                })
+                .sort((a, b) => {
+                  return a.make.localeCompare(b.make);
+                })
+                .map((car) => {
+                  return <option value={car.make}>{car.make}</option>;
+                })}
+            </select>
 
-      <div className="year-container">
-        {/* <div className="year-title">Select Year</div> */}
+            <select
+              onChange={(e) => setModel(e.target.value)}
+              name="model"
+              value={model}
+              id="model"
+            >
+              <option value="">Select Model</option>
+              {cars
+                .filter((car) => {
+                  if (modelObj[car.model]) {
+                    return false;
+                  }
+                  modelObj[car.model] = true;
+                  return true;
+                })
+                .sort((a, b) => {
+                  return a.model.localeCompare(b.model);
+                })
+                .map((car) => {
+                  return <option value={car.model}>{car.model}</option>;
+                })}
+            </select>
 
-        <select
-          onChange={(e) => setYear(e.target.value)}
-          name="year"
-          value={year}
-          id="year"
-        >
-          {cars
-            .filter((car) => {
-              if (yearsObj[car.year]) {
-                return false;
-              }
-              yearsObj[car.year] = true;
-              return true;
-            })
-            .sort((a, b) => {
-              return a.year - b.year;
-            })
-            .map((car) => {
-              return <option value={car.year}>{car.year}</option>;
-            })}
-        </select>
-      </div>
+            <select
+              onChange={(e) => setYear(e.target.value)}
+              name="year"
+              value={year}
+              id="year"
+            >
+              <option value="">Select Year</option>
+              {cars
+                .filter((car) => {
+                  if (yearsObj[car.year]) {
+                    return false;
+                  }
+                  yearsObj[car.year] = true;
+                  return true;
+                })
+                .sort((a, b) => {
+                  return a.year - b.year;
+                })
+                .map((car) => {
+                  return <option value={car.year}>{car.year}</option>;
+                })}
+            </select>
+            <span className="radio-sold-btns-container">
+              <input
+                onChange={() => setSoldStatus("Sold")}
+                type="radio"
+                id="sold"
+                checked={soldStatus === "Sold"}
+                name="status"
+                value="Sold"
+              />
+              <label className="text" htmlFor="sold">
+                SOLD
+              </label>
 
-      {/* <input
+              <input
+                onChange={() => setSoldStatus("Not Sold")}
+                type="radio"
+                id="notsold"
+                checked={soldStatus === "Not Sold"}
+                name="status"
+                value="Not Sold"
+                defaultChecked
+              />
+              <label className="text" htmlFor="notsold">
+                NOT SOLD
+              </label>
+            </span>
+            {/* <div className="radio-sold-btns-container">
+            <input onChange={(e) => setSoldStatus(e.target.value)} type="radio" id="sold" checked={soldStatus === 'Sold'} name="status" value={true} />
+            <label className="text" htmlFor="sold">SOLD</label>
+            <input onChange={(e) => setSoldStatus(e.target.value)} type="radio" id="notsold" checked={soldStatus === 'Not Sold'}  name="status" value={false} />
+            <label className="text" htmlFor="notsold">NOT SOLD</label>
+        </div> */}
+          </span>
+        ) : (
+          <span className="year-container">
+            <input
+              type="text"
+              placeholder="Make"
+              value={make}
+              onChange={(e) => setMake(e.target.value)}
+            />
+
+            <input
+              type="text"
+              placeholder="Model"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+            />
+            <select
+              onChange={(e) => setYear(e.target.value)}
+              name="year"
+              value={year}
+              id="year"
+            >
+              <option value="">Select Year</option>
+              {cars
+                .filter((car) => {
+                  if (yearsObj[car.year]) {
+                    return false;
+                  }
+                  yearsObj[car.year] = true;
+                  return true;
+                })
+                .sort((a, b) => {
+                  return a.year - b.year;
+                })
+                .map((car) => {
+                  return <option value={car.year}>{car.year}</option>;
+                })}
+            </select>
+          </span>
+        )}
+
+        <div className="year-container">
+          {/* <div className="year-title">Select Year</div> */}
+        </div>
+
+        {/* <input
         type="text"
         placeholder="Year"
         value={year}
         onChange={(e) => setYear(e.target.value)}
       /> */}
 
-  
-      <button
-        className="filter_btn"
-        onClick={() => {
-          setYear("");
-          setModel("");
-          setMake("");
-        }}
-      >
-        <i
-          className="fa-solid fa-filter-circle-xmark"
-          style={{ color: "#ffffff", fontSize: "25px" }}
-        ></i>
-      </button>
+        <button
+          className="filter_btn"
+          onClick={() => {
+            setYear("");
+            setModel("");
+            setMake("");
+            setSoldStatus("Not Sold")
+          }}
+        >
+          <i
+            className="fa-solid fa-filter-circle-xmark"
+            style={{ color: "#ffffff", fontSize: "25px" }}
+          ></i>
+        </button>
       </div>
 
       {/* {cars.map(car => {
