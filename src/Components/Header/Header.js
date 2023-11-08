@@ -10,6 +10,7 @@ import { BsFillGeoAltFill } from "react-icons/bs";
 import Modal from "../Modal/Modal";
 import AuthContext from "../../store/authContext";
 import Login from "../Login/Login"
+import loginImg from "../../assets/login.png"
 
 
 function Header() {
@@ -25,6 +26,12 @@ function Header() {
   };
   return (
     <div className="header">
+      <div className='header-data'>
+      <span className="header_goferinfo">
+      <BsFillGeoAltFill/> 1703 N Tower Rd Alamo, Texas, United States        <PhoneAndroidIcon className="phoneIcon" fontSize="small" />(956) 258-5021 
+      </span>
+      <span className="header_espanol">Hablamos Español</span>
+      </div>
       <Link to="/" style={{ textDecoration: "none" }}>
        
           <img src={logo} className="header_logo" alt="gofer company logo" />
@@ -99,13 +106,10 @@ function Header() {
             dispatch({type: 'LOGOUT'})
             nav('/');
           }}>Logout</button> :
-          <button onClick={openModal} className="nav_item" id='nav_btn' > Login</button>
+          <button onClick={openModal} className="nav_item" id='nav_btn' > <img className='login-img' src={loginImg} alt="" /> Log in / Register</button>
         }
 
-<span className="header_espanol">Hablamos Español</span>
-      <span className="header_goferinfo">
-      <BsFillGeoAltFill/> 1703 N Tower Rd Alamo, Texas, United States        <PhoneAndroidIcon className="phoneIcon" fontSize="small" />(956) 258-5021
-      </span>
+        
       <Modal isOpen={isModalOpen} closeModal={closeModal}>
           <Login className="nav_item" isOpen={isModalOpen} closeModal={closeModal}/>
         </Modal>

@@ -50,6 +50,27 @@ module.exports = {
       .then((dbRes) => res.status(200).send(dbRes[0]))
       .catch((err) => res.status(500).send(err));
     },
+    deleteCar: (req, res) => {
+      const { carId } = req.params;
+      sequelize
+        .query(
+          `
+          UPDATE contact_information
+          SET car_id = NULL
+          WHERE car_id = '${carId}'
+          `
+        )
+        .then(() => {
+          sequelize
+            .query(
+              `
+              DELETE FROM car_inventory WHERE car_id = '${carId}';
+              `
+            )
+            .then((dbRes) => res.status(200).send(dbRes[0][0]));
+        })
+        .catch((err) => res.status(500).send(err));
+    },
   sellCar: (req, res) => {
     const { carId } = req.params;
         sequelize

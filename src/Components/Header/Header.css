@@ -29,8 +29,14 @@
     font-size: 20x;
     text-align: center;
 }
+.login-img{
+    height: 23px;
+}
 
 #nav_btn{
+    display: flex;
+    align-items: center;
+    gap: 5px;
     background-color: transparent;
     border: none;
     font-size: 16px;
@@ -39,14 +45,20 @@
 .nav_item:hover {
     color: #f39c12; 
 }
-
+.header-data{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
 .header_goferinfo {
+    display: flex;
     font-size: 14px;
     color: #a3a3a3; 
-    width: 100%;
     text-align: center;
-    margin-top: 10px;
     order: -1;
+    width: 50%;
+    margin-left: 30vw;
 }
 
 .dropdown {
@@ -123,8 +135,7 @@
 .header_espanol {
     font-size: 16px;
     color: #d6a30bd0;
-    width: 100%;
+    /* width: 15%; */
     text-align: right;
-    margin-top: 10px;
     order: -1;
 }

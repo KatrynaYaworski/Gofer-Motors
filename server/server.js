@@ -23,7 +23,8 @@ const {
     createAppointment,
     getUserAdmin,
     sellCar,
-    addCar
+    addCar, 
+    deleteCar
 } = require('./controllers/controller.js');
 
 const  {seed } = require('./controllers/seed.js');
@@ -39,6 +40,8 @@ app.post("/register", register);
 app.post("/login", login);
 app.post("/contact_information", createAppointment)
 app.post("/car_inventory", addCar)
+
+app.delete("/car_inventory/:carId", deleteCar)
 
 app.put("/car_inventory/:carId", sellCar)
 

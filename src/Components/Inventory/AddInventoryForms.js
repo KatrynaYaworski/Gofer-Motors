@@ -4,20 +4,20 @@ import styles from "../Inventory/Inventory.module.css";
 import axios from "axios";
 import AuthContext from "../../store/authContext";
 import image from "../../assets/coming_soon.jpeg";
-import Inventory from "./Inventory";
 
 const AddInventoryForms = ({ closeModal, getCars, cars }) => {
   const { state, dispatch } = useContext(AuthContext);
   const [inventory, setInventory] = useState([]);
-  const [makeLi, setMakeLi] = useState("");
-  const [modelLi, setModelLi] = useState("");
-  const [priceLi, setPriceLi] = useState("");
-  const [yearLi, setYearLi] = useState("");
-  const [downPaymentLi, setDownPaymentLi] = useState("");
-  const [descriptionLi, setDescriptionLi] = useState("");
-  const [soldLi, setSoldLi] = useState("");
-  const [milesLi, setMilesLi] = useState("");
-  const [imageUrlLi, setImageUrlLi] = useState("");
+  const [showTable, setShowTable] = useState(false);
+  // const [makeLi, setMakeLi] = useState("");
+  // const [modelLi, setModelLi] = useState("");
+  // const [priceLi, setPriceLi] = useState("");
+  // const [yearLi, setYearLi] = useState("");
+  // const [downPaymentLi, setDownPaymentLi] = useState("");
+  // const [descriptionLi, setDescriptionLi] = useState("");
+  // const [soldLi, setSoldLi] = useState("");
+  // const [milesLi, setMilesLi] = useState("");
+  // const [imageUrlLi, setImageUrlLi] = useState("");
 
   const [error, setError] = useState("");
 
@@ -32,8 +32,23 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
     miles: "",
     image_url: "",
   };
-
-  const onSubmit = (values) => {
+  const onSubmit = (values, {resetForm}) => {
+    const addCar = () => {
+      const newCar = {
+        make: values.make,
+        model: values.model,
+        price: values.price,
+        year: values.year,
+        downPayment: values.down_payment,
+        description: values.description,
+        sold: values.sold,
+        miles: values.miles,
+        imageUrl: values.image_url,
+      };
+      if (newCar.make !== "") {
+        setInventory([...inventory, newCar]);
+      }
+    };
     if (values.make === "" || values.model === "" || values.year === "") {
       setError("Please enter a value for all fields*");
       console.log(values);
@@ -45,36 +60,15 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
       axios
         .post(`http://localhost:4000/car_inventory`, values, {})
         .then((res) => {
-          closeModal();
+          addCar();
           getCars();
-          console.log(res.data);
+          resetForm(); 
+          // setFieldValue("sold", false);
+          // setFieldValue("description", "");
+          setShowTable(true);
+          console.log("*****");
+          console.log(inventory);
         });
-    }
-  };
-
-  const addCar = () => {
-    const newCar = {
-      makeLi,
-      modelLi,
-      priceLi,
-      yearLi,
-      downPaymentLi,
-      descriptionLi,
-      soldLi,
-      milesLi,
-      imageUrlLi,
-    };
-    if (makeLi !== "") {
-      setInventory([...inventory, newCar]);
-      setMakeLi("");
-      setModelLi("");
-      setPriceLi("");
-      setYearLi("");
-      setDownPaymentLi("");
-      setDescriptionLi("");
-      setSoldLi("");
-      setMilesLi("");
-      setImageUrlLi("");
     }
   };
 
@@ -82,69 +76,41 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
     const { values, handleChange, handleSubmit } = formData;
     return (
       <form
-        className={styles.add_recipe_container}
+        className={styles.add_inventory_container}
         onSubmit={handleSubmit}
         action=""
       >
-        <section className={styles.car_array_container}>
-          {/* <section className={styles.ing_quant_container_left}>
-            <input
-              value={makeLi}
-              className={styles.inputs}
-              placeholder="Make"
-              onChange={(e) => setMakeLi(e.target.value)}
-              type="text"
-            />
-            <input
-              value={modelLi}
-              className={styles.inputs}
-              placeholder="Model"
-              onChange={(e) => setModelLi(e.target.value)}
-              type="text"
-            />
-            <input
-              value={yearLi}
-              className={styles.inputs}
-              placeholder="Year"
-              onChange={(e) => setYearLi(e.target.value)}
-              type="text"
-            />
-            <input
-              value={downPaymentLi}
-              className={styles.inputs}
-              placeholder="Down Payment"
-              onChange={(e) => setDownPaymentLi(e.target.value)}
-              type="text"
-            />
-            <input
-              value={descriptionLi}
-              className={styles.inputs}
-              placeholder="Description"
-              onChange={(e) => setDescriptionLi(e.target.value)}
-              type="text"
-            />
-            <input
-              value={soldLi}
-              className={styles.inputs}
-              placeholder="Sold"
-              onChange={(e) => setSoldLi(e.target.value)}
-              type="text"
-            />
-            <input
-              value={imageUrlLi}
-              className={styles.inputs}
-              placeholder="Image URL"
-              onChange={(e) => setImageUrlLi(e.target.value)}
-              type="text"
-            />
-          </section> */}
-          <ul className={styles.car_array_container_right}>
-            {inventory.map((car) => (
-              <li>{`${car.makeLi} ${car.modelLi} ${car.yearLi} ${car.downPaymentLi} ${car.descriptionLi} ${car.soldLi} ${car.milesLi} ${car.imageUrlLi}`}</li>
+        { showTable ?
+        <table className={styles.car_array_container}>
+          <thead>
+            <tr>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Sold</th>
+              <th>Price</th>
+              <th>Down Payment</th>
+              <th>Year</th>
+              <th>Miles</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {inventory.map((car, carIndex) => (
+              <tr key={carIndex}>
+                <td>{car.make}</td>
+                <td>{car.model}</td>
+                <td>{car.sold}</td>
+                <td>{car.price}</td>
+                <td>{car.downPayment}</td>
+                <td>{car.year}</td>
+                <td>{car.miles}</td>
+                <td>{car.description}</td>
+              </tr>
             ))}
-          </ul>
-        </section>
-        <section className={styles.name_image_container}>
+          </tbody>
+        </table> : ''}
+
+        <section className={styles.make_model_container}>
           <input
             className={styles.inputs}
             value={values.make}
@@ -181,38 +147,9 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
             placeholder="Image URL"
             type="text"
           />
-        </section>
-        <section className={styles.radio_btns_container}>
-          <span className={styles.input_radio_btn_container}>
-            <input
-              name="sold"
-              value={false}
-              onChange={handleChange}
-              // onChange={(e) => {
-              //   setSoldLi(e.target.value);
-              //   handleChange(e);
-              // }}
-              id="notSold"
-              type="radio"
-            />{" "}
-            <label htmlFor="notSold">Not Sold</label>
-          </span>
-          <span className={styles.ind_radio_btn_container}>
-            <input
-              name="sold"
-              value={true}
-              onChange={handleChange}
-              // onChange={(e) => {
-              //   setSoldLi(e.target.value);
-              //   handleChange(e);
-              // }}
-              id="sold"
-              type="radio"
-            />{" "}
-            <label htmlFor="sold">Sold</label>
-          </span>
-        </section>
-        <section className={styles.type_container}>
+          </section>
+        
+        <section className={styles.price_container}>
           <input
             className={styles.inputs}
             value={values.price}
@@ -263,6 +200,37 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
           />
         </section>
 
+        <span className={styles.radio_btns_container}>
+          <span className={styles.input_radio_btn_container}>
+            <input
+              name="sold"
+              value={false}
+              onChange={handleChange}
+              // onChange={(e) => {
+              //   setSoldLi(e.target.value);
+              //   handleChange(e);
+              // }}
+              id="notSold"
+              type="radio"
+            />{" "}
+            <label htmlFor="notSold">Not Sold</label>
+          </span>
+          <span className={styles.ind_radio_btn_container}>
+            <input
+              name="sold"
+              value={true}
+              onChange={handleChange}
+              // onChange={(e) => {
+              //   setSoldLi(e.target.value);
+              //   handleChange(e);
+              // }}
+              id="sold"
+              type="radio"
+            />{" "}
+            <label htmlFor="sold">Sold</label>
+          </span>
+        </span>
+
         {/* <button type="button" className={styles.add_btn} onClick={addCar}>
           Add Another Car
         </button> */}
@@ -283,16 +251,16 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
   };
 
   return (
-    <section className={styles.newCar_container}>
-      <h1 className={styles.newCar_title}> Add a new Car! </h1>
-      <div>
-        - for now we must add a make and model that is found in the DB since the
-        image URL is not stored in DB!
-      </div>
+    <span className={styles.newCar_container}>
+      <h1 className={styles.newCar_title}> Add Inventory </h1>
+      <span className={styles.alert_message}>
+        **for now we must ensure the make and model mirrors EXACTLY like one that is already found in the DB since the
+        image URL is temporarily rendered dynamically**
+      </span>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {formReturn}
       </Formik>
-    </section>
+    </span>
   );
 };
 
