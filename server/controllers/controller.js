@@ -8,7 +8,7 @@ function sendEmail(customerInfo) {
     customerInfo;
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: "outlook",
     auth: {
       user: SENDING_EMAIL,
       pass: EMAIL_PASSWORD,
@@ -121,7 +121,7 @@ module.exports = {
       .catch((err) => res.status(500).send(err));
   },
 
-  createAppointment: (req, res) => {
+  createContact: (req, res) => {
     const { Name, Last_Name, Phone, Email, Comments, car_id } = req.body;
 
     sequelize

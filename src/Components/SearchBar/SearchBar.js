@@ -1,6 +1,5 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./SearchBar.css";
-import SearchIcon from "@mui/icons-material/Search";
 import AuthContext from "../../store/authContext";
 // import axios from "axios";
 
@@ -15,7 +14,7 @@ function SearchBar({
   soldStatus,
   setSoldStatus,
 }) {
-  const { state, dispatch } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
 
   // const handleSearch = () => {
 

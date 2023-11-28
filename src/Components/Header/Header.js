@@ -1,21 +1,21 @@
-import React, {useContext, useState}from 'react';
-import {useNavigate} from 'react-router-dom'
-import "./Header.css";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./Header.module.css";
 import logo from "./gofer_logo.jpeg";
-// import DiscountIcon from "@mui/icons-material/Discount";
-import { Link } from "react-router-dom";
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-import { BsFillGeoAltFill } from "react-icons/bs";
+import { Link, useLocation } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import AuthContext from "../../store/authContext";
-import Login from "../Login/Login"
-import loginImg from "../../assets/login.png"
-
+import Login from "../Login/Login";
+import loginImg from "../../assets/login.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMobile, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 function Header() {
   const { state, dispatch } = useContext(AuthContext);
   const nav = useNavigate();
+  const location = useLocation();
+  const phoneNumber = "+9562585021";
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
@@ -24,98 +24,148 @@ function Header() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  const address = "1703 N Tower Rd, Alamo, TX 78516";
+
+  const openGoogleMaps = () => {
+    const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(
+      address
+    )}`;
+    window.location.href = mapsUrl;
+  };
   return (
-    <div className="header">
-      <div className='header-data'>
-      <span className="header_goferinfo">
-      <BsFillGeoAltFill/> 1703 N Tower Rd Alamo, Texas, United States        <PhoneAndroidIcon className="phoneIcon" fontSize="small" />(956) 258-5021 
-      </span>
-      <span className="header_espanol">Hablamos Español</span>
+    <div className={styles.header}>
+      <div className={styles.header_top_container}>
+        <span className={styles.header_top_left}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <img
+              src={logo}
+              className={styles.header_logo}
+              alt="gofer company logo"
+            />
+          </Link>
+        </span>
+        <span className={styles.header_top_right}>
+          <span className={styles.header_top_right_data_container}>
+            <span onClick={openGoogleMaps} className={styles.top_right_address_container}>
+              <button
+                className={styles.header_top_right_address}
+              >
+                <FontAwesomeIcon  icon={faMapMarkerAlt} /> 1703 N
+                Tower Rd Alamo, Texas, United States
+              </button>
+            </span>
+            <span className={styles.header_top_right_phone_container}>
+              <a
+                href={`tel:${phoneNumber}`}
+                className={styles.header_top_right_phone}
+              >
+                <FontAwesomeIcon icon={faMobile} />
+                (956) 258-5021
+              </a>
+            </span>
+          </span>
+          <div className={styles.social_icon_container}>
+            <a
+              href="https://www.facebook.com/profile.php?id=100094081966775"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebook className={styles.social_icon} />
+            </a>
+            <a
+              href="https://www.instagram.com/gofermotorsllc/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram className={styles.social_icon} />
+            </a>
+          </div>
+        </span>
       </div>
-      <Link to="/" style={{ textDecoration: "none" }}>
-       
-          <img src={logo} className="header_logo" alt="gofer company logo" />
+      <nav className={styles.header_bottom_container}>
+        <span className={styles.nav_bottom_left_container}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <span
+              className={`${styles.nav_item} ${
+                location.pathname === "/" ? styles.active : ""
+              }`}
+            >
+              Home
+            </span>
           </Link>
 
-          <Link to="/" style={{ textDecoration: "none" }}>
-          <div className="nav_item">
-            <span className="header_home">Home</span>
-          </div>
-      </Link>
+          <Link to="/inventory" style={{ textDecoration: "none" }}>
+            <span
+              className={`${styles.nav_item} ${
+                location.pathname === "/inventory" ? styles.active : ""
+              }`}
+            >
+              Inventory
+            </span>
+          </Link>
+          <Link to="/Contact" style={{ textDecoration: "none" }}>
+            <span
+              className={`${styles.nav_item} ${
+                location.pathname === "/Contact" ? styles.active : ""
+              }`}
+            >
+              Contact Us
+            </span>
+          </Link>
 
-      <Link to="/inventory" style={{ textDecoration: "none" }}>
-        <div className="nav_item">
-          <span className="header_inventory">Inventory</span>
-        </div>
-      </Link>
+          <Link to="/PrivacyP" style={{ textDecoration: "none" }}>
+            <span
+              className={`${styles.nav_item} ${
+                location.pathname === "/Privacy" ? styles.active : ""
+              }`}
+            >
+              Privacy Policy
+            </span>
+          </Link>
 
-      <div className="nav_item" style={{ textDecoration: "none" }}>
-        <div className="dropdown">
-          <span className="header_financing">Financing</span>
+          <span className={styles.nav_item}>Financing</span>
+        </span>
+        <span className={styles.nav_bottom_right_container}>
+          {state.token ? (
+            <span
+              className={`${styles.nav_item_btn} ${
+                isModalOpen ? styles.modalOpen : ""
+              }`}
+              id="nav_btn"
+              onClick={() => {
+                dispatch({ type: "LOGOUT" });
+                nav("/");
+              }}
+            >
+              Logout
+            </span>
+          ) : (
+            <span
+              onClick={openModal}
+              className={`${styles.nav_item_btn} ${
+                isModalOpen ? styles.modalOpen : ""
+              }`}
+              id="nav_btn"
+            >
+              {" "}
+              <img className={styles.login_img} src={loginImg} alt="" /> Log in
+              / Register
+            </span>
+          )}
 
-          <div className="dropdown-menu">
-            <ul className="header_financing_dropdown">
-              <li>
-                <a href="#option1">Gofer Motors LLC</a>
-              </li>
-              <li>
-                {" "}
-                <a href="#option2">Western Funding</a>
-              </li>
-              <li>
-                <a href="#option3">Lobel Financial</a>
-              </li>
-              <li>
-                <a href="#option4">Westlake</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <Link to="/appointment" style={{ textDecoration: "none" }}>
-        <div className="nav_item">
-          <span className="header_appointment">Request Appointment</span>
-        </div>
-      </Link>
-
-      <div className="nav_item">
-        <div className="dropdown">
-          <span className="header_specials">Specials</span>
-          {/* <DiscountIcon /> */}
-          <div className="dropdown-menu">
-            <ul className="header_financing_dropdown">
-              <li>
-                <a href="#option1">Cash Price</a>
-              </li>
-              <li>
-                <a href="#option2">No Down Payment</a>
-              </li>
-              <li>
-                <a href="#option3">Clearance</a>
-              </li>
-              <li>
-                <a href="#option4">Bonus Cash</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      { state.token ? 
-          <button className="nav_item" id='nav_btn' onClick={() => {
-            dispatch({type: 'LOGOUT'})
-            nav('/');
-          }}>Logout</button> :
-          <button onClick={openModal} className="nav_item" id='nav_btn' > <img className='login-img' src={loginImg} alt="" /> Log in / Register</button>
-        }
-
-        
-      <Modal isOpen={isModalOpen} closeModal={closeModal}>
-          <Login className="nav_item" isOpen={isModalOpen} closeModal={closeModal}/>
-        </Modal>
-      {/* <Link to="/authentication" style={{ textDecoration: "none" }}>
+          <Modal isOpen={isModalOpen} closeModal={closeModal}>
+            <Login
+              className={styles.nav_item}
+              isOpen={isModalOpen}
+              closeModal={closeModal}
+            />
+          </Modal>
+          {/* <Link to="/authentication" style={{ textDecoration: "none" }}>
         <span className="header_login">Login</span>
       </Link> */}
+        </span>
+      </nav>
     </div>
   );
 }

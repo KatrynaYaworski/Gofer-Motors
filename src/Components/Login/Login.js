@@ -9,7 +9,7 @@ const Login = ({ closeModal }) => {
   const [register, setRegister] = useState(false);
   const [error, setError] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('')
-  const { state, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const submitHandler = (e) => {
     e.preventDefault();

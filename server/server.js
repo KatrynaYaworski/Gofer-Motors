@@ -20,7 +20,7 @@ app.use(express.static('public'));
 const {
     getInventory,
     getReviews,
-    createAppointment,
+    createContact,
     getUserAdmin,
     sellCar,
     addCar, 
@@ -38,7 +38,7 @@ app.get("/users/:username", getUserAdmin)
 app.post('/seed', seed);
 app.post("/register", register);
 app.post("/login", login);
-app.post("/contact_information", createAppointment)
+app.post("/contact_information", createContact)
 app.post("/car_inventory", addCar)
 
 app.delete("/car_inventory/:carId", deleteCar)

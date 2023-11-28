@@ -1,18 +1,18 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./InventoryCard.css";
 import AuthContext from "../../store/authContext";
 import axios from "axios";
-import { buttonBaseClasses } from "@mui/material";
 import soldImage from "../../assets/sold.png";
 import editImage from "../../assets/edit.png";
 import trashImage from "../../assets/recycle-bin.png";
 
 function InventoryCard({ car, getCars }) {
-  const { state, dispatch } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
 
   // console.log(car.make)
 
-  const carImage = require(`../ImageReel/${car.make}_${car.model}.jpg`);
+  const carImage = require(`../../assets/car_images/${car.make}_${car.model}.jpg`);
+  
 
   const handleEditClick = () => {
     // event.stopPropagation();

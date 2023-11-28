@@ -71,7 +71,7 @@ module.exports = {
                (5, 'Car looks and drives great, very happy', '2023-09-17', 'The best car Ive ever bought');
   
               INSERT INTO contact_information (Name, Last_Name, Phone, Email, Comments, car_id)
-              VALUES ('Michelle','Sauceda', '98090808', '@gofer.com', 'I want an appointment this week',1);
+              VALUES ('Michelle','Sauceda', '98090808', '@gofer.com', 'I want an Contact this week',1);
   
           `)
           .then(() => {

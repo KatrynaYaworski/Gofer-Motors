@@ -9,6 +9,7 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
   const { state, dispatch } = useContext(AuthContext);
   const [inventory, setInventory] = useState([]);
   const [showTable, setShowTable] = useState(false);
+  
   // const [makeLi, setMakeLi] = useState("");
   // const [modelLi, setModelLi] = useState("");
   // const [priceLi, setPriceLi] = useState("");
@@ -32,6 +33,7 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
     miles: "",
     image_url: "",
   };
+
   const onSubmit = (values, {resetForm}) => {
     const addCar = () => {
       const newCar = {
