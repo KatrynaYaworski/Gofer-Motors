@@ -9,7 +9,8 @@
     --transition-speed: 0.3s;
   }
 
-.contact_container{
+.privacyp_container{
     min-height: 100vh;
     background-color: var(--primary-color);
+    color: white;
 }

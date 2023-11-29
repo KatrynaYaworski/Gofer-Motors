@@ -1,89 +1,78 @@
 const { sequelize } = require("../util/database");
 
-module.exports = {  
-    seed: async (req, res) => {
-      try {
-          await sequelize.query(
-              `
-              DROP TABLE IF EXISTS users;
-              DROP TABLE IF EXISTS user_reviews;
-              DROP TABLE IF EXISTS contact_information;
-              DROP TABLE IF EXISTS car_inventory;
+module.exports = {
+  seed: async (req, res) => {
+    try {
+      await sequelize
+        .query(
+                `
+                    DROP TABLE IF EXISTS users;
+                    DROP TABLE IF EXISTS contact_information;
+                    DROP TABLE IF EXISTS car_inventory;
+
+                    CREATE TABLE users (
+                        user_id SERIAL PRIMARY KEY,
+                        isAdmin BOOLEAN DEFAULT false,
+                        username VARCHAR(50) NOT NULL,
+                        password VARCHAR(200) NOT NULL
+                    );
+                    
+                    CREATE TABLE car_inventory (
+                        car_id SERIAL PRIMARY KEY,
+                        make VARCHAR(100),
+                        model VARCHAR(30),
+                        sticker_price INTEGER,
+                        year INTEGER,
+                        mileage INTEGER,
+                        color VARCHAR(20),
+                        interior_color VARCHAR(20),
+                        body_type VARCHAR(20),
+                        title VARCHAR(20),
+                        engine TEXT,
+                        vin_number VARCHAR(30),
+                        stock_number VARCHAR(15),
+                        description TEXT,
+                        sold BOOLEAN DEFAULT false
+                    );
+                    
+                    CREATE TABLE contact_information (
+                        contact_id SERIAL PRIMARY KEY,
+                        first_name VARCHAR(200),
+                        last_name VARCHAR(200),
+                        phone VARCHAR(20),
+                        email VARCHAR(50),
+                        comments TEXT,
+                        car_id INTEGER,
+                        FOREIGN KEY (car_id) REFERENCES car_inventory (car_id)
+                    );
+                    
+                    INSERT INTO car_inventory ( make, model, sticker_price, year, mileage, color, interior_color, body_type, title, engine, vin_number, stock_number, description) 
+                    VALUES 
+                    ('Dodge', 'Journey', 5500, 2014, 2300, 'Red', 'Black', 'Sedan', 'Clean', 'I3', '123456789', '6789', 'Had just one owner and has many upgrades'),
+                    ('Ford', 'Escape', 6500, 2018, 95500, 'Black', 'Tan', 'SUV/Crossover', 'Clean', 'Hybrid', '1236547', '6547', 'This compact SUV is great for weekend getaways!'),
+                    ('Kia', 'Rio', 6900, 2015, 200500, 'Grey', 'Black', 'Pick up Truck', 'Clean', 'H4', '8956327', '6327', 'Had just one owner and has many upgrades'),
+                    ('Buick', 'Encore', 4500, 2014, 290000, 'Black', 'Black', 'Minivan', 'Clean', 'I4', '7458961', '8961', 'Had just one owner and has many upgrades'),
+                    ('Buick', 'Verano', 7400, 2014, 150000, 'Grey', 'Black', 'Sedan', 'Clean', 'I4', '1254896', '4896', 'Had just one owner and has many upgrades'),
+                    ('Dodge', 'Dart', 6900, 2016, 198458, 'White', 'Black', 'Sedan', 'Clean', 'K5', '56487945', '7945', 'Had just one owner and has many upgrades'),
+                    ('Nissan', 'Altima', 6500, 2014, 189400, 'White', 'Black', 'Sedan', 'na', 'Hybrid', '1235469', '5469', 'Had just one owner and has many upgrades'),
+                    ('Hyundai', 'Elantra', 5800, 2017, 152400, 'Grey', 'Black', 'Convertible', 'Clean', 'V6', '5412378', '2378', 'Had just one owner and has many upgrades'),
+                    ('BMW', '328', 4500, 2015, 231000, 'White', 'Black', 'Coupe', 'Clean', 'V6', '6543781', '3781', 'Had just one owner and has many upgrades'),
+                    ('BMW', 'X3', 4500, 2017, '143500', 'Grey', 'Black', 'SUV/Crossover', 'Clean', 'V8', '6751983', '1983', 'Had just one owner and has many upgrades'),
+                    ('Range Rover', 'Evoque', 4500, 2013, 182500, 'Blue', 'Grey', 'Wagon', 'Mended', 'V6 Turbo', '4571827', '1827', 'Had just one owner and has many upgrades'),
+                    ('Mitsubishi', 'Mirage', 4500, 2019, 95000, 'Blue', 'Tan', 'Hatchback', 'Clean', 'V6', '4478145', '8145', 'Had just one owner and has many upgrades');
   
-              CREATE TABLE users(
-                user_id SERIAL PRIMARY KEY,
-                isAdmin BOOLEAN DEFAULT false,
-                username varchar (50) NOT NULL,
-                password varchar (200) NOT NULL
-            );
-              
-              CREATE TABLE car_inventory (
-                  car_id SERIAL PRIMARY KEY,
-                  Make varchar(100),
-                  Model text,
-                  Price text,
-                  Year integer,
-                  Down_Payment text,
-                  Description text,
-                  Sold BOOLEAN DEFAULT false,
-                  Miles integer               
-              );
-        
-              CREATE TABLE user_reviews(
-                  reviews_id SERIAL PRIMARY KEY,
-                  Rating integer,
-                  Review text,
-                  Timestamp text,
-                  review_title varchar(70)
-                  );
-    
-              CREATE TABLE contact_information (
-                  contact_id SERIAL PRIMARY KEY,
-                  Name varchar(200),
-                  Last_Name varchar(200),
-                  Phone varchar(20),
-                  Email varchar(50),
-                  Comments text,
-                  car_id integer,
-                  FOREIGN KEY(car_id) REFERENCES car_inventory(car_id)
-              );
-  
-              INSERT INTO car_inventory (Make, Model, Price, Year, Down_Payment, Description, Miles)
-              VALUES ('Dodge', 'Journey','$5,500', 2014, '$2,300', 'Clean Title', 99),
-                     ('Ford', 'Escape','Ask for Cash Price', 2018, '$2,500', 'Clean Title', 1125),
-                     ('Kia', 'Rio','$6,900', 2015, '$1,800', 'Clean Title', 225),
-                     ('Buick', 'Encore','Ask for Cash Price', 2014, '$2,000', 'Clean Title', 659),
-                     ('Buick', 'Verano','$7,400', 2014, '$2,500', 'Clean Title', 2025),
-                     ('Dodge', 'Dart','$6,900', 2016, '$2,000', 'Clean Title', 1278),
-                     ('Nissan', 'Altima','$6,500', 2014, '$1,800', 'Clean Title', 562),
-                     ('Hyundai', 'Elantra','$5,800', 2017, '$1,500', 'Clean Title', 789),
-                     ('BMW', '328','Ask for Cash Price', 2015, '$3,000', 'Clean Title', 1245),
-                     ('BMW', 'X3','Ask for Cash Price', 2017, '$3,500', 'Clean Title', 985),
-                     ('Range Rover', 'Evoque', 'Ask for Cash Price', 2013, '$3,500', 'Clean Title', 123),
-                     ('Mitsubishi', 'Mirage','Ask for Cash Price', 2019, '$2,000', 'Clean Title', 1958);
-  
-              INSERT INTO user_reviews(Rating, Review, Timestamp, review_title)
-              VALUES (5, 'The car was in perfect condition', '2023-09-20', 'Bought the car of my dreams'),
-               (5, 'Very good car, good condition and as described', '2023-09-20', 'Almost like new!'),
-               (5, 'The car was in perfect condition', '2023-09-22', 'Will buy again'),
-               (5, 'Smooth transaction and friendly staff', '2023-09-18', 'Excellent service'),
-               (5, 'Pleasant transaction with cordial staff', '2023-09-15', 'Extremely happy with my purchase'),
-               (5, 'Car looks and drives great, very happy', '2023-09-17', 'The best car Ive ever bought');
-  
-              INSERT INTO contact_information (Name, Last_Name, Phone, Email, Comments, car_id)
-              VALUES ('Michelle','Sauceda', '98090808', '@gofer.com', 'I want an Contact this week',1);
-  
-          `)
-          .then(() => {
-              console.log("DB seeded!");
-              res.sendStatus(200);
-          })
-          .catch((err) => {
-              console.log("error seeding DB", err);
-          });
-      } catch(err) {
-          console.error(err);
-          res.status(500).send("Internal Server Error");
-      }
+          `
+        )
+        .then(() => {
+          console.log("DB seeded!");
+          res.sendStatus(200);
+        })
+        .catch((err) => {
+          console.log("error seeding DB", err);
+        });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
     }
+  },
 };

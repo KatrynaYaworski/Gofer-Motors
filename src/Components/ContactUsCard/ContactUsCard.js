@@ -46,7 +46,7 @@ function ContactUsCard () {
             .then(response => {
 
                 setFormData({
-                    name: '',
+                    firstName: '',
                     lastName: '',
                     phone: '',
                     email: '',
@@ -62,11 +62,11 @@ function ContactUsCard () {
     };
 
     return (
-        <div className={styles.card_container}> 
+        <div className={styles.contact_card_container}> 
             <input 
                 className={styles.name} 
-                placeholder="Name" 
-                name="name" 
+                placeholder="First Name" 
+                name="firstName" 
                 value={formData.name} 
                 onChange={handleInputChange}
             />
@@ -91,13 +91,7 @@ function ContactUsCard () {
                 value={formData.email}
                 onChange={handleInputChange}
             />
-            <input 
-                className={styles.comments} 
-                placeholder="Comments"
-                name="comments"
-                value={formData.comments}
-                onChange={handleInputChange}
-            />
+           
             
             <select 
                 value={selectedCar}
@@ -109,6 +103,13 @@ function ContactUsCard () {
                      {car.make} {car.model} ({car.year})</option>
                 ))}
             </select>
+            <textarea 
+                className={styles.comments} 
+                placeholder="Comments"
+                name="comments"
+                value={formData.comments}
+                onChange={handleInputChange}
+            />
             {
     successMessage && <p className={styles.success_message}>{successMessage}</p>
 }

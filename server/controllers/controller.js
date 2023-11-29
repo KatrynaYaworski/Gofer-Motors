@@ -4,7 +4,7 @@ const { sequelize } = require("../util/database");
 const { RECEIVING_EMAIL, SENDING_EMAIL, EMAIL_PASSWORD } = process.env;
 
 function sendEmail(customerInfo) {
-  const { Name, Last_Name, Phone, Email, Comments, car_id, Model, Year } =
+  const { first_name, last_name, phone, email, comments, car_id, model, year } =
     customerInfo;
 
   const transporter = nodemailer.createTransport({
@@ -18,13 +18,13 @@ function sendEmail(customerInfo) {
   const mailOptions = {
     from: SENDING_EMAIL,
     to: RECEIVING_EMAIL,
-    subject: `${Name} ${Last_Name} has sent an inquiry!`,
+    subject: `${first_name} ${last_name} has sent an inquiry!`,
     text: `
-    Name: ${Name} ${Last_Name}
-    Phone: ${Phone}
-    Email: ${Email}
-    Comments: ${Comments}
-    Vehicle ID: ${car_id + Model + Year}
+    Name: ${first_name} ${last_name}
+    Phone: ${phone}
+    Email: ${email}
+    Comments: ${comments}
+    Vehicle ID: ${car_id + model + year}
     `,
   };
 
@@ -39,12 +39,12 @@ function sendEmail(customerInfo) {
 
 module.exports = {
   addCar: (req, res) => {
-    const {make, model, price, year, down_payment, description, sold, miles} = req.body;
+    const {make, model, sticker_price, year, description, sold, mileage, color, interior_color, body_type, title, engine, vin_number, stock_number} = req.body;
     sequelize
     .query(
       `
-      INSERT INTO car_inventory (Make, Model, Price, Year, Down_Payment, Description, Sold, Miles)
-              VALUES ('${make}', '${model}', '$${price}', ${year}, '$${down_payment}', '${description}', ${sold}, ${miles})
+      INSERT INTO car_inventory (make, model, sticker_price, year, mileage, color, interior_color, body_type, title, engine, vin_number, stock_number, description)
+              VALUES ('${make}', '${model}', ${sticker_price}, ${year}, ${mileage}, '${color}', '${interior_color}', '${body_type}', '${title}', '${engine}', '${vin_number}', '${stock_number}', '${description}')
       `
       )
       .then((dbRes) => res.status(200).send(dbRes[0]))

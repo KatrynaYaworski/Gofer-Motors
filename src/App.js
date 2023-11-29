@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./App.module.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, {useContext, useState}from 'react';
 
@@ -6,6 +6,7 @@ import Header from "./Components/Header/Header";
 import Home from "./Components/HomePage/Home";
 import Inventory from "./Components/Inventory/Inventory";
 import Contact from "./Components/ContactUs/ContactUs"
+import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyPolicy";
 import Footer from "./Components/Footer/Footer";
 import AuthContext from "./store/authContext";
 
@@ -26,12 +27,13 @@ function App() {
     setModalOpen(false);
   };
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Header isModalOpen={isModalOpen} setModalOpen={setModalOpen} openModal={openModal}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/inventory" element={<Inventory />} />
-        <Route path="/Contact" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacyp" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />
     </div>

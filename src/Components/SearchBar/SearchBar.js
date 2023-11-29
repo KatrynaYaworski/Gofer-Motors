@@ -48,14 +48,7 @@ function SearchBar({
   return (
     <div className="search">
       <div className="searchContainer">
-        {state.isadmin || state.isadmin === "true" ? (
-          ""
-        ) : (
-          <h3 className="titleSearch">
-            {" "}
-            What type of vehicle are you interested in
-          </h3>
-        )}
+        
       </div>
       <div className="input-container">
         {/* <div className="make-input-container"> */}

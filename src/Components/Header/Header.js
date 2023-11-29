@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
-import logo from "./gofer_logo.jpeg";
+import logo from "./gofer_logo.png";
 import { Link, useLocation } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import AuthContext from "../../store/authContext";
@@ -104,20 +104,20 @@ function Header() {
               Inventory
             </span>
           </Link>
-          <Link to="/Contact" style={{ textDecoration: "none" }}>
+          <Link to="/contact" style={{ textDecoration: "none" }}>
             <span
               className={`${styles.nav_item} ${
-                location.pathname === "/Contact" ? styles.active : ""
+                location.pathname === "/contact" ? styles.active : ""
               }`}
             >
               Contact Us
             </span>
           </Link>
 
-          <Link to="/PrivacyP" style={{ textDecoration: "none" }}>
+          <Link to="/privacyp" style={{ textDecoration: "none" }}>
             <span
               className={`${styles.nav_item} ${
-                location.pathname === "/Privacy" ? styles.active : ""
+                location.pathname === "/privacyp" ? styles.active : ""
               }`}
             >
               Privacy Policy

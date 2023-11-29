@@ -25,12 +25,18 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
   const initialValues = {
     make: "",
     model: "",
-    price: "",
+    sticker_price: "",
     year: "",
-    down_payment: "",
     description: "",
     sold: false,
-    miles: "",
+    mileage: "",
+    color: "",
+    interior_color: "", 
+    body_type: "", 
+    title: "", 
+    engine: "", 
+    vin_number: "", 
+    stock_number: "",
     image_url: "",
   };
 
@@ -39,13 +45,19 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
       const newCar = {
         make: values.make,
         model: values.model,
-        price: values.price,
+        sticker_price: values.sticker_price,
         year: values.year,
-        downPayment: values.down_payment,
         description: values.description,
         sold: values.sold,
-        miles: values.miles,
-        imageUrl: values.image_url,
+        mileage: values.mileage,
+        color: values.color,
+        interior_color: values.interior_color, 
+        body_type: values.body_type, 
+        title: values.title, 
+        engine: values.engine, 
+        vin_number: values.vin_number, 
+        stock_number: values.stock_number,
+        image_url: values.image_url,
       };
       if (newCar.make !== "") {
         setInventory([...inventory, newCar]);
@@ -90,9 +102,18 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
               <th>Model</th>
               <th>Sold</th>
               <th>Price</th>
-              <th>Down Payment</th>
+              <th>Engine</th>
               <th>Year</th>
-              <th>Miles</th>
+              <th>Mileage</th>
+              <th>Color</th>
+              <th>Interior Color</th>
+              <th>Body Type</th>
+
+              <th>Title</th>
+              <th>Vin</th>
+              <th>Stock #</th>
+
+              {/* <th>Image URL</th> */}
               <th>Description</th>
             </tr>
           </thead>
@@ -102,10 +123,17 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
                 <td>{car.make}</td>
                 <td>{car.model}</td>
                 <td>{car.sold}</td>
-                <td>{car.price}</td>
-                <td>{car.downPayment}</td>
+                <td>{car.sticker_price}</td>
+                <td>{car.engine}</td>
                 <td>{car.year}</td>
-                <td>{car.miles}</td>
+                <td>{car.mileage}</td>
+                <td>{car.color}</td>
+                <td>{car.interior_color}</td>
+                <td>{car.body_type}</td>
+                <td>{car.title}</td>
+                <td>{car.vin_number}</td>
+                <td>{car.stock_number}</td>
+                {/* <td>{car.image_url}</td> */}
                 <td>{car.description}</td>
               </tr>
             ))}
@@ -150,30 +178,153 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
             type="text"
           />
           </section>
+{/* here! */}
+          <section className={styles.make_model_container}>
+          <select
+            className={styles.inputs}
+            value={values.color}
+            onChange={handleChange}
+            // onChange={(e) => {
+            //   setMakeLi(e.target.value);
+            //   handleChange(e);
+            // }}
+            name="color"
+            placeholder="Vehicle Color"
+            type="text"
+          >
+            <option value="">Select Color</option>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Silver">Silver</option>
+            <option value="Grey">Grey</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Brown">Brown</option>
+            <option value="Beige">Beige</option>
+            <option value="Gold">Gold</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Orange">Orange</option>
+
+          </select>
+          <select
+            className={styles.inputs}
+            value={values.interior_color}
+            onChange={handleChange}
+            // onChange={(e) => {
+            //   setMakeLi(e.target.value);
+            //   handleChange(e);
+            // }}
+            name="interior_color"
+            placeholder="Interior Color"
+            type="text"
+            >
+            <option value="">Select Interior Color</option>
+            <option value="Black">Black</option>
+            <option value="Grey">Grey</option>
+            <option value="Beige">Beige</option>
+            <option value="Tan">Tan</option>
+            <option value="Brown">Brown</option>
+            <option value="White">White</option>
+            <option value="Cream">Cream</option>
+            <option value="Charcoal">Charcoal</option>
+            <option value="Ivory">Ivory</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+
+          </select>
+          <select
+            className={styles.inputs}
+            value={values.body_type}
+            onChange={handleChange}
+            // onChange={(e) => {
+            //   setImageUrlLi(e.target.value);
+            //   handleChange(e);
+            // }}
+            name="body_type"
+            placeholder="Body Type"
+            type="text"
+          >
+            <option value="">Select Body Type</option>
+            <option value="Pick up Truck">Pick up Truck</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV/Crossover">SUV/Crossover</option>
+            <option value="Coupe">Coupe</option>
+            <option value="Hatchback">Hatchback</option>
+            <option value="Convertible">Convertible</option>
+            <option value="Wagon">Wagon</option>
+            <option value="Minivan">Minivan</option>
+          </select>
+          </section>
+
+          <section className={styles.make_model_container}>
+          <select
+            className={styles.inputs}
+            value={values.title}
+            onChange={handleChange}
+            // onChange={(e) => {
+            //   setMakeLi(e.target.value);
+            //   handleChange(e);
+            // }}
+            name="title"
+            placeholder="Title"
+            type="text"
+          >
+            <option value="">Select Title</option>
+            <option value="Clean">Clean</option>
+            <option value="Bonded">Bonded</option>
+            <option value="No Title">No Title</option>
+          </select>
+          <input
+            className={styles.inputs}
+            value={values.vin_number}
+            onChange={handleChange}
+            // onChange={(e) => {
+            //   setMakeLi(e.target.value);
+            //   handleChange(e);
+            // }}
+            name="vin_number"
+            placeholder="Vin Number"
+            type="text"
+          />
+          <input
+            className={styles.inputs}
+            value={values.stock_number}
+            onChange={handleChange}
+            // onChange={(e) => {
+            //   setImageUrlLi(e.target.value);
+            //   handleChange(e);
+            // }}
+            name="stock_number"
+            placeholder="Stock Number"
+            type="text"
+          />
+          </section>
         
         <section className={styles.price_container}>
           <input
             className={styles.inputs}
-            value={values.price}
+            value={values.sticker_price}
             onChange={handleChange}
             // onChange={(e) => {
             //   setPriceLi(e.target.value);
             //   handleChange(e);
             // }}
-            name="price"
+            name="sticker_price"
             placeholder="Price"
             type="text"
           />
           <input
             className={styles.inputs}
-            value={values.down_payment}
+            value={values.engine}
             onChange={handleChange}
             // onChange={(e) => {
             //   setDownPaymentLi(e.target.value);
             //   handleChange(e);
             // }}
-            name="down_payment"
-            placeholder="Down Payment"
+            name="engine"
+            placeholder="Engine"
             type="text"
           />
           <input
@@ -190,14 +341,14 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
           />
           <input
             className={styles.inputs}
-            value={values.miles}
+            value={values.mileage}
             onChange={handleChange}
             // onChange={(e) => {
             //   setMilesLi(e.target.value);
             //   handleChange(e);
             // }}
-            name="miles"
-            placeholder="Miles"
+            name="mileage"
+            placeholder="Mileage"
             type="text"
           />
         </section>
@@ -253,8 +404,8 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
   };
 
   return (
-    <span className={styles.newCar_container}>
-      <h1 className={styles.newCar_title}> Add Inventory </h1>
+    <span className={styles.new_car_container}>
+      <h1 className={styles.new_car_title}> Add Inventory </h1>
       <span className={styles.alert_message}>
         **for now we must ensure the make and model mirrors EXACTLY like one that is already found in the DB since the
         image URL is temporarily rendered dynamically**

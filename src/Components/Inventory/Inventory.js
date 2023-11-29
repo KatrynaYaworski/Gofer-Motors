@@ -93,10 +93,10 @@ function Inventory() {
       />
     ));
   return (
-    <div className={styles.completeInventory}>
-      <h3 className={styles.advancedTitle}>
+    <div className={styles.inventory_container}>
+      <h3 className={styles.title}>
         { state.isadmin === true || state.isadmin === "true" ? " ** Admin Inventory View ** "
-        : "Ready for an Upgrade? Your Next Car Awaits!"
+        : "Quality Used Vehicles in Alamo TX"
         }   
       </h3>
 
@@ -118,7 +118,7 @@ function Inventory() {
      <Modal isOpen={isModalOpen} closeModal={closeModal}>
         <AddInventoryForms cars={cars} getCars={getCars} isOpen={isModalOpen} closeModal={closeModal}></AddInventoryForms>
       </Modal>
-      <div className={styles.cardContainer}>{carResults}</div>
+      <div className={styles.card_container}>{carResults}</div>
     </div>
   );
 }
