@@ -29,6 +29,7 @@ function App() {
   const closeModal = () => {
     setModalOpen(false);
   };
+  
   return (
     <SimpleBar style={{ maxHeight: '100vh' }}>
     <div className="App">

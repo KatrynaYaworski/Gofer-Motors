@@ -20,8 +20,8 @@ function Header() {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleWhatsAppClick = () => {
-    const whatsAppPhone = '9564511120';
-    const whatsappUrl = `https://wa.me/${whatsAppPhone}`;
+    const whatsAppPhone = '9562585021';
+    const whatsappUrl = `https://wa.me/${whatsAppPhone}?action=call`;
     window.open(whatsappUrl, '_blank');
   }
 
@@ -75,6 +75,7 @@ function Header() {
             <span className={styles.header_top_right_phone_container}>
               <span                
                 className={styles.header_top_right_phone}
+                onClick={handleWhatsAppClick}
               >
                 <FaWhatsapp size={20}
                 onClick={handleWhatsAppClick} />
