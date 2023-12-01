@@ -10,6 +10,7 @@ import loginImg from "../../assets/login.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMobile, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaWhatsapp} from 'react-icons/fa';
 
 function Header() {
   const { state, dispatch } = useContext(AuthContext);
@@ -17,6 +18,13 @@ function Header() {
   const location = useLocation();
   const phoneNumber = "+9562585021";
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleWhatsAppClick = () => {
+    const whatsAppPhone = '9564511120';
+    const whatsappUrl = `https://wa.me/${whatsAppPhone}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
   const openModal = () => {
     setModalOpen(true);
   };
@@ -63,6 +71,15 @@ function Header() {
                 <FontAwesomeIcon icon={faMobile} />
                 (956) 258-5021
               </a>
+            </span>
+            <span className={styles.header_top_right_phone_container}>
+              <span                
+                className={styles.header_top_right_phone}
+              >
+                <FaWhatsapp size={20}
+                onClick={handleWhatsAppClick} />
+                (956) 258-5021
+              </span>
             </span>
           </span>
           <div className={styles.social_icon_container}>

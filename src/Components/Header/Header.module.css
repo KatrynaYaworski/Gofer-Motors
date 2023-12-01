@@ -24,7 +24,7 @@
     align-items: center;
     gap: 1em;
     color: white;
-    width: 40%;
+    width: 55%;
     justify-content: space-between;
     padding: .5em;
 }
@@ -201,7 +201,7 @@
       box-shadow: 0 0 20px rgba(214, 163, 11, 0.816);
     }
     100% {
-      box-shadow: 0 0 5px rgba(214, 163, 11, 0.816);
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
     }
   }
 

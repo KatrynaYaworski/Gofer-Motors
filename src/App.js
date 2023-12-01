@@ -1,6 +1,9 @@
-import styles from "./App.module.css";
+import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, {useContext, useState}from 'react';
+import SimpleBar from "simplebar-react";
+import 'simplebar-react/dist/simplebar.min.css';
+
 
 import Header from "./Components/Header/Header";
 import Home from "./Components/HomePage/Home";
@@ -27,7 +30,8 @@ function App() {
     setModalOpen(false);
   };
   return (
-    <div className={styles.App}>
+    <SimpleBar style={{ maxHeight: '100vh' }}>
+    <div className="App">
       <Header isModalOpen={isModalOpen} setModalOpen={setModalOpen} openModal={openModal}/>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -37,6 +41,7 @@ function App() {
       </Routes>
       <Footer />
     </div>
+    </SimpleBar>
   );
 }
 

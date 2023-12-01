@@ -20,26 +20,34 @@ body, p {
     color: white;
     font-family: 'Arial', sans-serif;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     flex-direction: column;
-    border-radius: 5px;
+    
 }
 
 .footer_content_container{
     display: flex;
     justify-content: space-evenly;
+    min-height: 15vh;
+    padding-top: 1%;
+    width: 100%;
 }
+
 .footer_line_container{
-    width: 100vw;
+    width: 98%;
 }
 
 .social_icon_container{
     /* width: 3vw; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding-top: 10%;
 }
 .social_icon{
     color: var(--thecolor);
-    font-size: 2.5rem;
+    font-size: 2.85rem;
     cursor: pointer;
 }
 .social_icon:hover{
@@ -51,6 +59,7 @@ body, p {
     margin-left: auto;
     padding-right: 1vw;
     font-size: small;
+    height: 2vh;
     gap: 2vw;
     justify-content: space-evenly;
     align-items: end;
@@ -65,25 +74,59 @@ body, p {
     color: rgb(196, 192, 192);
     font-weight: bold;
 }
+.data_outer_container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+}
+.data_container{
+    height: 115%;
+}
 
-@keyframes glowing {
-    0% {
-      box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
-    }
-    100% {
-      box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-    }
-  }
+.data_container>h3{
+    
+}
 
-  .glow {
-    width: 100px;
-    height: 100px;
-    background-color: var(--thecolor);
-    border-radius: 50%;
-    animation: glowing 2s infinite;
-  }
+.vertical_line{
+    border-right: 2px solid var(--secondary-color);
+    height: 100%;
+}
 
+.nav_item {
+    margin: 0 1vw;
+    position: relative;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    color: var(--secondary-color);
+    font-size: 1em;
+    font-weight: 900;
+    text-align: center;
+}
+.nav_item:hover {
+    color: white;
+}
+.active{
+    margin: 0 1vw;
+    position: relative;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--tiertiary-color);
+    font-size: 1em;
+    text-align: center;
+}
+
+.nav_outer_container{
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    align-content: flex-start;
+    width: 100%;
+}
+
+.nav_container{
+    display: flex;
+    flex-direction: column;
+}
 
