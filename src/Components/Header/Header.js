@@ -9,6 +9,7 @@ import Login from "../Login/Login";
 import loginImg from "../../assets/login.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMobile, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaWhatsapp} from 'react-icons/fa';
 
@@ -68,7 +69,7 @@ function Header() {
                 href={`tel:${phoneNumber}`}
                 className={styles.header_top_right_phone}
               >
-                <FontAwesomeIcon icon={faMobile} />
+                <FontAwesomeIcon icon={faMobileAlt} />
                 (956) 258-5021
               </a>
             </span>
