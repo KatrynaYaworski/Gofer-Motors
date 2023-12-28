@@ -1,14 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, useLocation } from "react-router-dom";
-import { faMobile, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
 import { FaWhatsapp } from "react-icons/fa";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import loginImg from "../../assets/login.png";
 import Modal from "../Modal/Modal";
 import AuthContext from "../../store/authContext";
 import Login from "../Login/Login";
@@ -70,7 +69,7 @@ function Footer() {
                   color="rgba(214, 163, 11, 0.816)"
                   size="2x"
                 />
-                {email}
+                y.gofer@gofermotors.com
               </button>
               <a href={`tel:${phoneNumber}`} className={styles.phone_tag}>
                 <FontAwesomeIcon

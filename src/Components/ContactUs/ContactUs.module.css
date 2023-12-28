@@ -21,7 +21,7 @@ width: 100%;
 box-sizing: border-box; 
 } */
 
-.ContactUsCard_Component {
+.contact_us {
 display: flex;
 flex: 3; 
 flex-direction: column;
@@ -38,7 +38,7 @@ max-width: 20%;
 
 }
 
-.ContactInfo_Component {
+.contact_info {
 display: flex;
 flex: 2; 
 flex-direction: column;

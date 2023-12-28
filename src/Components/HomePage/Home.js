@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import heroImage from "../../assets/Hero-img.jpg";
 import aboutUsImage from "../../assets/aboutus.jpg";
+import GoferLocationSection from "./GoferLocationSection";
 
 function Home() {
   return (
@@ -55,6 +56,7 @@ function Home() {
             </p>
           </div>
         </div>
+        <GoferLocationSection/>
       </div>
 
 

@@ -9,7 +9,7 @@
     --transition-speed: 0.3s;
 }
 
-.contactInfo_container {
+.container {
   flex: 2;
   max-width: 50%;
   background-color: var(--primary-color);
@@ -19,29 +19,29 @@
   color: var(--light-gray);
 }
 
-.contactInfo_title {
+.title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.contactInfo_mail {
+.mail {
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-.storeHours_container {
+.store_hours_container {
   margin-top: 20px;
   display: flex;
 }
 
-.storeHours_title {
+.store_hours_title {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 3%;
 }
 
-.storeHours_days {
+.days {
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
@@ -49,7 +49,7 @@
   margin-bottom: 1%;
 }
 
-.storeHours_hours {
+.hours {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
