@@ -14,13 +14,6 @@
   background-color: var(--primary-color);
   flex-wrap: wrap;
 }
-
-/* .ContactUsCard_Component,
-.contact_pics_container {
-width: 100%;
-box-sizing: border-box; 
-} */
-
 .contact_us {
 display: flex;
 flex: 3; 
@@ -36,14 +29,6 @@ flex: 1;
 flex-wrap: wrap;
 max-width: 20%;
 
-}
-
-.contact_info {
-display: flex;
-flex: 2; 
-flex-direction: column;
-max-width: 100%;
-flex-wrap: wrap;
 }
 
 .google_map {
@@ -80,14 +65,13 @@ color: var(--light-gray);
   flex-direction: column;
 }
 
-.ContactUsCard_Component,
+/* .contact_container,
 .contact_pics_container {
   max-width: 100%;
   flex: auto;
-}
+} */
 
-.contact_pic1,
-.contact_pic2 {
-  max-width: 100%;
+.contact_pic {
+  width: 5vw;
 }
 }

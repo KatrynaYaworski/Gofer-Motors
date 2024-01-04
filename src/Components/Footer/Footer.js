@@ -86,7 +86,7 @@ function Footer() {
               >
                 <FaWhatsapp
                   color={"rgba(214, 163, 11, 0.816)"}
-                  size={35}
+                  size="2vw"
                   onClick={handleWhatsAppClick}
                 />
                 (956)-258-5021

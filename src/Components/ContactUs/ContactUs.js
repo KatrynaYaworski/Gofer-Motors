@@ -1,25 +1,28 @@
 import React from "react";
 import styles from "./ContactUs.module.css";
 import ContactUsCard from "../ContactUsCard/ContactUsCard";
-import ContactInfo from "../ContactInfo/ContactInfo";
-import test_drive from "../../assets/contact_us_images/test_drive.jpg";
-import test_drive2 from "../../assets/contact_us_images/test_drive2.jpg";
+import GoferLocationSection from "../HomePage/GoferLocationSection";
+
+import displayImgOne from "../../assets/contact_us_images/standing-by-car-talking.jpg"
+import displayImgTwo from "../../assets/contact_us_images/customer-service-woman-on-a-phone.jpg"
+import displayImgThree from "../../assets/contact_us_images/test_drive2.jpg"
 
 function ContactUs () {
+
+    const customStyle = {
+        display: 'flex',
+        flexDirection: 'row-reverse',
+        width: '100vw'
+    }
+    const lineCustomStyle = {
+        display: 'none'
+    }
     return (
         
        <div className={styles.contact_container}>
-        <ContactInfo className={styles.contact_info} />
-         <iframe className={styles.google_map}
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28633.888531722707!2d-98.1018341!3d26.2215181!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86659f5b93e0b6d5%3A0x948d328f2ce5f191!2sGofer%20Motors%2C%20LLC!5e0!3m2!1sen!2sus!4v1697062032696!5m2!1sen!2sus" 
-                    width="600" 
-                    height="450" 
-                    style={{ border: "0" }} 
-                    allowFullScreen 
-                    loading="lazy" 
-                    title="Gofer Motors Location" 
-                    referrerPolicy="no-referrer-when-downgrade">
-                </iframe>
+        <div className={styles.location_wrapper}>
+        <GoferLocationSection lineStyleProp={lineCustomStyle} styleProp={customStyle} className={styles.contact_info} />
+        </div>
                 
                 <div className={styles.visit_container}>
                     
@@ -38,8 +41,9 @@ function ContactUs () {
              <br/>
         <ContactUsCard className={styles.contact_us} />
         <div className={styles.contact_pics_container}>
-            <img className={styles.contact_pic1} src={test_drive} alt="people talking"/>
-            <img className={styles.contact_pic2} src={test_drive2} alt="woman driving"/>
+            <img className={styles.contact_pic} height={200} width={350} src={displayImgOne} alt="people talking"/>
+            <img className={styles.contact_pic} height={200} width={350} src={displayImgTwo} alt="woman working"/>
+            <img className={styles.contact_pic} height={200} width={350} src={displayImgThree} alt="woman driving"/>
        
 
        </div>

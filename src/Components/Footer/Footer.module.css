@@ -48,7 +48,7 @@ body, p {
 }
 .social_icon{
     color: var(--thecolor);
-    font-size: 3rem;
+    font-size: 3vw;
     cursor: pointer;
 }
 .social_icon:hover{
@@ -99,7 +99,7 @@ body, p {
     transition: color 0.3s ease;
     cursor: pointer;
     color: var(--secondary-color);
-    font-size: 1.1em;
+    font-size: 1vw;
     font-weight: bold;
     /* text-align: center; */
     min-width: 9vw;
@@ -124,7 +124,7 @@ body, p {
     cursor: pointer;
     text-decoration: underline;
     color: var(--tiertiary-color);
-    font-size: 1.1em;
+    font-size: 1vw;
     /* text-align: center; */
 }
 
@@ -135,8 +135,12 @@ body, p {
     height: 50%;
     /* margin-top: -5%; */
 }
+.data_container{
+    font-size: 1vw;
+}
 
 .get_started{
+    /* font-size: 1.3vw; */
     margin-left: -20%;
     margin-bottom: -.01%;
 }
@@ -147,7 +151,7 @@ body, p {
     padding-top: 0.3vh;
     width: 100%;
     font-weight: bolder;
-    font-size: 1em;
+    font-size: .86vw;
 }
 .store_hours_day{
     width: 8vw;
@@ -172,6 +176,7 @@ body, p {
     align-items: center;
     justify-content: space-between;
     width: 87%;
+    font-size: .9vw;
     font-weight: bold;
     cursor: pointer;
 }
@@ -188,6 +193,7 @@ body, p {
     justify-content: space-between;
     width: 105%;
     font-weight: bold;
+    font-size: .9vw;
     cursor: pointer;
 }
 
@@ -202,7 +208,7 @@ body, p {
     align-items: center;
     justify-content: space-between;
     width: 51%;
-    font-size: .85em;
+    font-size: .9vw;
     font-weight: bold;
     cursor: pointer;
     margin-left: .5vw;
@@ -217,7 +223,7 @@ body, p {
     align-items: center;
     justify-content: space-between;
     width: 55%;
-    font-size: .85em;
+    font-size: .9vw;
     font-weight: bold;
     cursor: pointer;
 }
