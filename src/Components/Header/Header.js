@@ -78,7 +78,7 @@ function Header() {
                 className={styles.header_top_right_phone}
                 onClick={handleWhatsAppClick}
               >
-                <FaWhatsapp size={20}
+                <FaWhatsapp size="1vw"
                 onClick={handleWhatsAppClick} />
                 (956) 258-5021
               </span>

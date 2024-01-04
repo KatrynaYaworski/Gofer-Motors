@@ -96,7 +96,7 @@ const GoferLocationSection = ({ lineStyleProp, styleProp }) => {
           <div className={styles.whatsapp} onClick={handleWhatsAppClick}>
             <FaWhatsapp
               color={"rgba(214, 163, 11, 0.816)"}
-              size={35}
+              size="2vw"
               onClick={handleWhatsAppClick}
             />
           </div>

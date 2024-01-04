@@ -16,17 +16,17 @@
     justify-content: space-between;
     background-color: var(--primary-color);
     height: 6vh;
-    padding: 0 1em;
+    padding: 0 .9vw;
 }
 
 .header_top_right{
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 1vw;
     color: white;
     width: 49%;
     justify-content: space-between;
-    padding: .5em;
+    padding: .5vw;
 }
 .header_top_right_data_container{
     width: 75%;
@@ -46,13 +46,14 @@
     background-color: transparent;
     color: inherit;
     /* width: 100%; */
-    font-size: 1em;
+    font-size: .8vw;
     display: flex;
     cursor: pointer;
     justify-content: space-between;
 }
 .header_top_right_phone_container{
     text-decoration: none;
+    font-size: .8vw;
     width: 28%;
     display: flex;
     justify-content: space-between;
@@ -83,7 +84,7 @@
 }
 .social_icon{
     color: var(--thecolor);
-    font-size: 2rem;
+    font-size: 1.5vw;
     cursor: pointer;
 }
 .social_icon:hover{
@@ -97,10 +98,7 @@
 }
 
 .header_logo:hover {
-    /* width: 100px;
-    height: 100px; */
     background-color: var(--thecolor);
-    /* border-radius: 50%; */
     animation: glowing 2s infinite;
 }
 
@@ -113,7 +111,7 @@
 }
 .nav_bottom_right_container{
     display: flex;
-    padding: 1.5em;
+    padding: 1vw;
 }
 
 .nav_item {
@@ -122,7 +120,7 @@
     transition: color 0.3s ease;
     cursor: pointer;
     color: var(--primary-color);
-    font-size: 1em;
+    font-size: .9vw;
     font-weight: 600;
     text-align: center;
 }
@@ -132,13 +130,13 @@
     transition: color 0.3s ease;
     cursor: pointer;
     color: var(--tiertiary-color);
-    font-size: 1em;
+    font-size: .9vw;
     font-weight: 900;
     text-align: center;
 }
 
 .login_img {
-    height: 23px;
+    height: 3vh;
 }
 
 .nav_item_btn {
@@ -150,10 +148,10 @@
     font-weight: 550;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: .2vw;
     background-color: transparent;
     border: none;
-    font-size: 16px;
+    font-size: .9vw;
 }
 
 .modalOpen{
@@ -165,10 +163,10 @@
     font-weight: 800;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: .2vw;
     background-color: transparent;
     border: none;
-    font-size: 16px;
+    font-size: .9vw;
 }
 
 .nav_item_btn:hover {
@@ -183,7 +181,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* font-size: 14px; */
     color: white;
 
 

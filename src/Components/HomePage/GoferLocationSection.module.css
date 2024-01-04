@@ -151,6 +151,9 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    width: 105%;
+    font-weight: bold;
+    font-size: .9vw;
 }
 
 .store_hours_container {
