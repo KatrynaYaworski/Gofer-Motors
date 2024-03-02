@@ -288,10 +288,10 @@ function Footer() {
         <p className={styles.privacy_rights}>
           {" "}
           Developed by{" "}
-          Michelle Castaneda and{" "}
           <a href="https://katrynayaworski.github.io" target="_blank">
              Katryna Yaworski
           </a>
+          {" "}and Michelle Castaneda 
         </p>
       </div>
     </div>
