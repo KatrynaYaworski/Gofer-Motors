@@ -6,7 +6,6 @@ import AuthContext from "../../store/authContext";
 import image from "../../assets/coming_soon.jpeg";
 
 const AddInventoryForms = ({ closeModal, getCars, cars }) => {
-  const { state, dispatch } = useContext(AuthContext);
   const [inventory, setInventory] = useState([]);
   const [showTable, setShowTable] = useState(false);
   

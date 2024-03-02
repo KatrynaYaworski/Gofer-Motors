@@ -8,6 +8,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     rejectUnauthorized: false,
   },
 });
+
 module.exports = {
     sequelize
 }

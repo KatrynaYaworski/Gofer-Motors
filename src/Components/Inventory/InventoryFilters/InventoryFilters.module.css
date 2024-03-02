@@ -1,0 +1,13 @@
+.react-slider {
+    width: 100%; /* Set the width as needed */
+  }
+  
+  .react-slider__handle {
+    width: 20px; /* Set the handle width */
+    height: 20px; /* Set the handle height */
+    background-color: #007bff; /* Set the handle color */
+  }
+
+  .filters_wrapper{
+    color: white;
+  }

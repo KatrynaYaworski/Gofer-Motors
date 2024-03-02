@@ -7,16 +7,16 @@
     --error-red: #E74C3C;
     --success-green: #2ECC71;
     --transition-speed: 0.3s;
-  }
+}
 
 .contact_card_container {
     display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-    max-width: 50vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 35vw;
     padding: 2em;
-    border: 1px solid #c5c5c5;
-    border-radius: 12px;
+    border: 1px solid whitesmoke;
+    border-radius: 20px;
     background-color: #1B1F26;
 }
 
@@ -24,12 +24,12 @@ justify-content: space-between;
 .contact_card_container select,
 .contact_card_container textarea,
 .contact_card_container button {
-    padding: 14px 18px;
-    margin-bottom: 18px;
+    padding: .7vw 1vw;
+    margin-bottom: 1vw;
     border: .5px solid var(--primary-color);
     border-color: none;
     border-radius: 6px;
-    font-size: 17px;
+    font-size: 1vw;
     width: 100%;
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -42,16 +42,45 @@ justify-content: space-between;
     box-shadow: var(--secondary-color);
     outline: none;
 }
-
+.send_btn_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .contact_card_container button {
-    background-color: #bf8d1a;
-    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 4vh;
+    font-size: 2.3vh;
+    font-weight: 550;
+    color: white;
     cursor: pointer;
+    background-color: var(--secondary-color);
     transition: background-color 0.4s;
 }
 
 .contact_card_container button:hover {
-    background-color: #c1b319;
+    background-color: var(--tiertiary-color);
+}
+
+.data_clause {
+    font-size: .7vw;
+    color: white;
+    padding: .5vw;
+    margin-top: -2vh;
+}
+
+.privacyp_link {
+    color: white;
+    text-decoration: underline;
+}
+
+.privacyp_link:hover {
+    color: white;
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 .successMessage {

@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import heroImage from "../../assets/Hero-img.jpg";
-import financeImg from "../../assets/businessman-showing-key.jpg"
-import testDriveImg from "../../assets/steering wheel.jpeg"
+import financeImg from "../../assets/businessman-showing-key.jpg";
+import testDriveImg from "../../assets/steering wheel.jpeg";
 import aboutUsImage from "../../assets/aboutus.jpg";
 import GoferLocationSection from "./GoferLocationSection";
 import CircularImage from "../CircularImage/CircularImage";
@@ -11,6 +11,7 @@ import CircularImage from "../CircularImage/CircularImage";
 function Home() {
   return (
     <div className={styles.home_container}>
+      
       <div className={styles.hero_container}>
         <img
           className={styles.hero_img}
@@ -34,9 +35,45 @@ function Home() {
         </div>
       </div>
 
+
       <div className={styles.inventory_search_container}></div>
 
       <div>
+        
+
+        <div className={styles.contact_section}>
+          <span className={styles.image_container}>
+            <CircularImage imageUrl={financeImg} />
+            <h1>In House Financing Available!</h1>
+            <p>
+              Our commitment to excellence extends to making the financing
+              process seamless, whether you're eyeing a sleek sedan or a robust
+              SUV. Let us tailor a financing solution that aligns with your
+              unique needs.
+            </p>
+            <Link to="/contact" style={{ textDecoration: "none" }}>
+              <button className={styles.contact_btn}>Contact us now!</button>
+            </Link>
+          </span>
+
+          <span className={styles.line_box}></span>
+
+          <span className={styles.image_container}>
+            <h1>Schedule a Test Drive!</h1>
+            <p>
+              Dive into the world of quality and precision with our carefully
+              inspected used cars. Schedule a test drive today and let the road
+              reveal the unmatched performance of our vehicles.
+            </p>
+            <CircularImage imageUrl={testDriveImg} />
+            <Link to="/contact" style={{ textDecoration: "none" }}>
+              <button className={styles.contact_btn}>
+                Schedule a test drive!
+              </button>
+            </Link>
+          </span>
+        </div>
+
         <div className={styles.about_us_container}>
           <img
             src={aboutUsImage}
@@ -60,32 +97,8 @@ function Home() {
           </div>
         </div>
 
-        <div className={styles.contact_section}>
-          <span className={styles.image_container}>
-            <CircularImage imageUrl={financeImg}  />
-         <h1>In House Financing Available!</h1>
-         <p>Our commitment to excellence extends to making the financing process seamless, whether you're eyeing a sleek sedan or a robust SUV. Let us tailor a financing solution that aligns with your unique needs.</p>
-         <Link to="/contact" style={{ textDecoration: "none" }}>
-         <button className={styles.contact_btn}>Contact us now!</button>
-         </Link>
-          </span>
-          <span>
-            <span className={styles.line_box}></span>
-          </span>
-          <span className={styles.image_container}>
-          <h1>Schedule a Test Drive!</h1>
-         <p>Dive into the world of quality and precision with our carefully inspected used cars. Schedule a test drive today and let the road reveal the unmatched performance of our vehicles.</p>
-            <CircularImage imageUrl={testDriveImg} />
-            <Link to="/contact" style={{ textDecoration: "none" }}>
-         <button className={styles.contact_btn}>Schedule a test drive!</button>
-         </Link>
-          </span>
-        </div>
-
-        <GoferLocationSection/>
+        <GoferLocationSection />
       </div>
-
-
     </div>
   );
 }

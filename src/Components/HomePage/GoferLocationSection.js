@@ -5,10 +5,9 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FaWhatsapp } from "react-icons/fa";
 import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { FitScreen } from "@mui/icons-material";
 import { useState } from "react";
 
-const GoferLocationSection = ({ lineStyleProp, styleProp }) => {
+const GoferLocationSection = ({ lineStyleProp, styleProp, detailsContainerStyleProp }) => {
   const address = "1703 N Tower Rd, Alamo, TX 78516";
   const phoneNumber = "+9562585021";
   const email = "mailto:y.gofer@gofermotors.com";
@@ -31,16 +30,6 @@ const GoferLocationSection = ({ lineStyleProp, styleProp }) => {
     window.location.href = mapsUrl;
   };
 
-  const [showOverlay, setShowOverlay] = useState(true);
-
-  const handleMapClick = () => {
-    setShowOverlay(true);
-  };
-
-  const handleOverlayClick = () => {
-    setShowOverlay((prevShowOverlay) => !prevShowOverlay);
-  };
-
   return (
     <div className={styles.wrapper}>
         <div style={lineStyleProp} className={styles.line_container}>
@@ -48,6 +37,7 @@ const GoferLocationSection = ({ lineStyleProp, styleProp }) => {
       </div>
     <div  style={styleProp} className={styles.inner_wrapper}>
       <div className={styles.google_map_container}>
+        <div className={styles.iframe_container}>
         <iframe
           className={styles.google_map}
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28633.888531722707!2d-98.1018341!3d26.2215181!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86659f5b93e0b6d5%3A0x948d328f2ce5f191!2sGofer%20Motors%2C%20LLC!5e0!3m2!1sen!2sus!4v1697062032696!5m2!1sen!2sus"
@@ -56,11 +46,11 @@ const GoferLocationSection = ({ lineStyleProp, styleProp }) => {
           loading="lazy"
           title="Gofer Motors Location"
           referrerPolicy="no-referrer-when-downgrade"
-          onClick={handleMapClick}
         ></iframe>
-      {showOverlay && <div className={styles.overlay} onClick={handleOverlayClick}></div>}
+        </div>
+       <div className={styles.overlay}></div>
       </div>
-      <div onClick={handleMapClick} className={styles.details_container}>
+      <div style={detailsContainerStyleProp} className={styles.details_container}>
         <h1 className={styles.title}>
           Gofer Motors LLC
           <hr />

@@ -1,15 +1,55 @@
-.inventory_container {
+.wrapper {
     font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #191919;
-    /* max-width: 1200px; */
     min-height: 100vh;
     margin: 0 auto;
+    background-color: var(--primary-color);
 }
 
-.title {
-    font-size:3em;
+.nav_img {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* height: 20vh; */
+    overflow: hidden;
+  }
+  
+  .nav_img_container {
+    position: relative;
+    font-family: 'Saira Semi Condensed', sans-serif;
+    height: 10vh;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(161, 125, 17, 0.247);
+  }
+  
+  .txt_overlay_container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 10vh;
+    padding-left: 1vw;
     color: white;
+  }
+  
+  .title {
+    margin: 0;
+    position: absolute;
+    font-size: 3vw;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+  }
+
+.inventory_body_wrapper{
+    display: flex;
+    position: relative;
+    background-color: var(--primary-color);
 }
 
 .card_container {

@@ -267,13 +267,13 @@ function Footer() {
       </Link> */}
                 
 
-                <Link to="/favorites" style={{ textDecoration: "none" }}>
+                <Link to="/financing" style={{ textDecoration: "none" }}>
                   <span
                     className={`${styles.nav_item} ${
-                      location.pathname === "/favorites" ? styles.active : ""
+                      location.pathname === "/financing" ? styles.active : ""
                     }`}
                   >
-                    Favorites
+                    Financing
                   </span>
                 </Link>
               </div>

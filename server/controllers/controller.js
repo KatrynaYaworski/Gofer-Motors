@@ -86,6 +86,7 @@ module.exports = {
   },
   
   getInventory: (req, res) => {
+    console.log("fetching inventory")
     sequelize
     .query(
       `

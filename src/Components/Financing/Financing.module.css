@@ -1,0 +1,150 @@
+:root {
+  --primary-color: #16181D;
+  --secondary-color: rgba(214, 163, 11, 0.816);
+  --tertiary-color: rgba(162, 123, 5, 0.936);
+  --light-gray: #ECF0F1;
+  --dark-gray: #16181D;
+  --error-red: #E74C3C;
+  --success-green: #2ECC71;
+  --transition-speed: 0.3s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-color);
+}
+
+
+.main_wrapper{
+  /* margin: 0; */
+  width: 90%;
+  align-items: start;
+  padding: 2vw 5vw;
+  /* min-height: 100vh; */
+  /* margin: 0 auto; */
+  background-color: var(--primary-color);
+}
+
+
+.nav_img {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* height: 20vh; */
+  overflow: hidden;
+}
+
+.nav_img_container {
+  position: relative;
+  font-family: 'Saira Semi Condensed', sans-serif;
+  height: 10vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(161, 125, 17, 0.481);
+}
+
+.txt_overlay_container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* width: 100%; */
+  padding-bottom: 10vh;
+  padding-left: 1vw;
+  color: white;
+  font-size: 1.55vw;
+}
+
+.title {
+  margin: 0;
+  position: absolute;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+}
+
+
+
+
+.heading, .subtitle_contact {
+  font-size: 2vw;
+  font-weight: bold;
+  margin-bottom: 1vh;
+  margin-top: 1.7vh;
+  color: var(--secondary-color);
+}
+
+.next_vehicle {
+  font-size: 1.5vw;
+  font-weight: bold;
+  margin-top: 1.7vw;
+  color: var(--light-gray);
+  margin-bottom: 1%;
+}
+
+.subtitle, .welcome {
+  font-size: 1.5vw;
+  font-weight: bold;
+  color: var(--light-gray);
+  margin-bottom: 1%;
+}
+
+.text {
+  font-size: 1.2vw;
+  margin-top: 10px;
+  color: var(--light-gray);
+}
+
+.credit_text {
+  font-weight: bold;
+}
+
+.subtitle_benefits {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.terms_apply {
+  color: var(--light-gray);
+  font-size: small;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+/* Image Styling */
+.customer_picture {
+  width: 220px;
+  height: 150px;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+/* List Styling */
+.benefits_list {
+  margin-top: 20px;
+  color: var(--light-gray);
+  margin-left: 5%;
+}
+
+.benefits_list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.benefits_list li {
+  margin-bottom: 10px;
+}
+
+.benefits_list li::before {
+  content: '\2022'; 
+  color: var(--secondary-color); 
+  display: inline-block;
+  width: 1vw;
+  margin-left: -1em;
+}
+
