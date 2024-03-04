@@ -59,7 +59,7 @@ function InventoryCard({ car, getCars }) {
         <span className="car_title">
           {car.year} {car.make} {car.model}
         </span>
-        <span>
+        <span className="car_body_type">
           {car.body_type}
         </span>
         <span className="car_miles_price_container">

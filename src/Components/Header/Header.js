@@ -21,7 +21,7 @@ function Header() {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleWhatsAppClick = () => {
-    const whatsAppPhone = '9562585021';
+    const whatsAppPhone = '9565338752';
     const whatsappUrl = `https://wa.me/${whatsAppPhone}?action=call`;
     window.open(whatsappUrl, '_blank');
   }

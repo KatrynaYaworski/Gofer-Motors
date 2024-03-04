@@ -20,7 +20,7 @@ function Footer() {
   const address = "1703 N Tower Rd, Alamo, TX 78516";
   const phoneNumber = "+9562585021";
   const email = "mailto:y.gofer@gofermotors.com";
-  const whatsAppPhone = "9562585021";
+  const whatsAppPhone = "9565338752";
 
   const [isModalOpen, setModalOpen] = useState(false);
 
