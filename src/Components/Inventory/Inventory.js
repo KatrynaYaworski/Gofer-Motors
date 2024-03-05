@@ -17,6 +17,20 @@ function Inventory() {
   const [make, setMake] = useState("");
   const [soldStatus, setSoldStatus] = useState("Not Sold");
   const [soldSearch, setSoldSearch] = useState("");
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://cdn.trustindex.io/loader.js?385902226c0553324126a6a330d";
+    script.defer = true;
+    script.async = true;
+
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
   // const [userdata, setUserData] = useState();
 
   // useEffect(() => {
@@ -132,6 +146,11 @@ function Inventory() {
         <AddInventoryForms cars={cars} getCars={getCars} isOpen={isModalOpen} closeModal={closeModal}></AddInventoryForms>
       </Modal>
       <div className={styles.card_container}>{carResults}</div>
+      <hr className={styles.line} />
+      <div
+          class="elfsight-app-67d05697-7080-45d3-9152-5d696a678951"
+          data-elfsight-app-lazy
+        ></div>
     </div>
   );
 }

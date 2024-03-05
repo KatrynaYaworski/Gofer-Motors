@@ -1,38 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 
 const GoogleReviews = () => {
-  const [reviews, setReviews] = useState([]);
-
   useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await axios.get(
-          `https://maps.googleapis.com/maps/api/place/details/json?place_id=YOUR_PLACE_ID&fields=name,review&key=YOUR_API_KEY`
-        );
-        setReviews(response.data.result.reviews);
-      } catch (error) {
-        console.error('Error fetching reviews:', error);
-      }
-    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.trustindex.io/loader.js?385902226c0553324126a6a330d';
+    script.defer = true;
+    script.async = true;
 
-    fetchReviews();
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
   }, []);
 
-  return (
-    <div>
-      <h2>Google Reviews</h2>
-      <ul>
-        {reviews.map((review) => (
-          <li key={review.time}>
-            <p>{review.text}</p>
-            <p>Rating: {review.rating}</p>
-            <p>Author: {review.author_name}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://static.elfsight.com/platform/platform.js"
+    script.defer = true;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  return null; // The widget will be loaded asynchronously, no need to render anything here
 };
 
 export default GoogleReviews;

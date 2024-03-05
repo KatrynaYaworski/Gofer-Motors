@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import heroImage from "../../assets/Hero-img.jpg";
@@ -9,9 +9,33 @@ import GoferLocationSection from "./GoferLocationSection";
 import CircularImage from "../CircularImage/CircularImage";
 
 function Home() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://static.elfsight.com/platform/platform.js";
+    script.defer = true;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://cdn.trustindex.io/loader.js?385902226c0553324126a6a330d";
+    script.defer = true;
+    script.async = true;
+
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className={styles.home_container}>
-      
       <div className={styles.hero_container}>
         <img
           className={styles.hero_img}
@@ -35,12 +59,9 @@ function Home() {
         </div>
       </div>
 
-
       <div className={styles.inventory_search_container}></div>
 
       <div>
-        
-
         <div className={styles.contact_section}>
           <span className={styles.image_container}>
             <CircularImage imageUrl={financeImg} />
@@ -96,10 +117,12 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className={styles.reviews_container}>
-          <hr />
-          <div className="elfsight-app-f758bd66-983b-415b-97cd-0c676468ba9f" data-elfsight-app-lazy></div>
-        </div>
+        <hr className={styles.line} />
+        <div
+          class="elfsight-app-67d05697-7080-45d3-9152-5d696a678951"
+          data-elfsight-app-lazy
+        ></div>
+        {/* <iframe src='https://cdn.trustindex.io/amp-widget.html#385902226c0553324126a6a330d' sandbox='allow-scripts allow-same-origin' layout='fixed-height' width='50%' height='424' resizable='resizable'><span overflow></span></iframe> */}
         <GoferLocationSection />
       </div>
     </div>

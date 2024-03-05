@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./ContactUs.module.css";
 import ContactUsCard from "../ContactUsCard/ContactUsCard";
 import GoferLocationSection from "../HomePage/GoferLocationSection";
@@ -22,6 +22,20 @@ function ContactUs() {
   const detailsContainerCustomStyle = {
     marginLeft: "0vw",
   };
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://cdn.trustindex.io/loader.js?385902226c0553324126a6a330d";
+    script.defer = true;
+    script.async = true;
+
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -131,6 +145,11 @@ function ContactUs() {
         </div>
         <br />
       </div>
+      <hr className={styles.line} />
+        <div
+          class="elfsight-app-67d05697-7080-45d3-9152-5d696a678951"
+          data-elfsight-app-lazy
+        ></div>
     </div>
   );
 }

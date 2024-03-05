@@ -39,7 +39,9 @@
   height: 100%;
   background-color: rgba(161, 125, 17, 0.3);
 }
-
+.line{
+  /* width: 50%; */
+}
 .txt_overlay_container {
   position: absolute;
   top: 65%;
@@ -47,7 +49,7 @@
   transform: translate(-50%, -50%);
   text-align: right;
   color: white;
-  width: 85%;
+  width: 95%;
   padding-right: 5vw;
 }
 
@@ -136,6 +138,7 @@
   transition: opacity 0.3s ease;
   z-index: -1;
 }
+
 
 .hero_btn:hover {
   background-color: var(--secondary-color);
