@@ -1,17 +1,26 @@
+:root {
+    --primary-color: #16181D;
+    --secondary-color: rgba(214, 163, 11, 0.816);
+    --tiertiary-color: rgba(162, 123, 5, 0.936);
+    --thecolor: rgb(179, 136, 9);
+    --light-gray: #ECF0F1;
+    --dark-gray: #2C3E50;
+    --error-red: #E74C3C;
+    --success-green: #2ECC71;
+    --transition-speed: 0.3s;
+  }
+ 
+ 
  .car_card {
      display: flex;
      flex-direction: column;
      align-items: center;
-     background-color: #1a1a1a;
+     background-color: var(--primary-color);
      border: 1.5px solid white;
-     /* border-radius: 8px; */
-     /* padding: 20px; */
-     margin: 20px;
-     width: 300px;
+     margin: 2vh;
+     /* width: 15.5vw; */
      box-shadow: grey 4px 4px 20px;
      transition: transform 0.3s ease, box-shadow 0.3s ease;
-     padding-bottom: 5px;
-     
  }
 
  .car_card:hover {
@@ -19,21 +28,20 @@
      box-shadow: grey 0px 19px 33px;
      cursor: pointer;
  }
- .car_image_container{
-    position: relative;
-    height: 200px;
-    width: 300px;
-    overflow: hidden;
-    margin-top: -10px;
-    z-index: 1;  
+
+ .car_image_container {
+     position: relative;
+     height: 23vh;
+     width: 30vh;
+     overflow: hidden;
+     margin-top: -1vh;
+     z-index: 1;
  }
 
  .carImageCard {
      width: 100%;
-     height: 200px;
+     height: 100%;
      object-fit: cover;
-     /* border-radius: 8px; */
-     margin-bottom: 20px;
  }
 
  .car_info {
@@ -42,136 +50,155 @@
      width: 90%;
      color: white;
  }
- .car_miles_price_container{
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
+
+ .car_miles_price_container {
+     display: flex;
+     justify-content: space-between;
+     margin: .8vh 0;
  }
- .car_miles{
-    font-size: .875rem;
-    line-height: 1.5em;
-    color: hsl(0, 0%, 62%);
-    margin-bottom: 0.375rem;
-    font-weight: 600;
+
+ .car_miles {
+     font-size: .9vw;
+     line-height: 3vh;
+     color: hsl(0, 0%, 62%);
+     margin-bottom: .5vh;
+     font-weight: 600;
  }
- .car_price{
-    font-size: 1rem;
-    line-height: 1.25rem;
-    color: lightgray;
-    font-weight: 600;
+
+ .car_price {
+     font-size: 1vw;
+     line-height: 2vh;
+     color: var(--light-gray);
+     font-weight: 600;
  }
 
  .car_title {
-    color: white;
-    margin-top: 10px;
-     font-size: 1rem;
+     color: white;
+     margin-top: 1vh;
+     font-size: 1.8vh;
      text-align: left;
      font-weight: 600;
  }
- .car_body_type{
-    color: rgb(184, 184, 184);
-    font-size: .8vw;
-    margin-top: .8vw;
+
+ .car_body_type {
+     color: rgb(184, 184, 184);
+     font-size: .9vw;
+     margin-top: .8vw;
  }
- .location{
-    font-weight: 400;
-    font-style: normal;
-    font-size: .875em;
-    margin-bottom: 200px;
-    color: rgb(255, 255, 255);
-    font-weight: 600;
+
+ .location {
+     font-weight: 400;
+     font-style: normal;
+     font-size: .85vw;
+     color: var(--light-gray);
+     font-weight: 600;
  }
 
  .car_info p {
-     margin: 5px 0;
+     margin: .5vh 0;
      color: #7f7f7f;
+     padding-bottom: 1vh;
  }
 
  .add-inventory {
      justify-content: center;
      align-items: center;
-     padding: 10px 10px;
+     padding: 1vh 1vh;
      transition: all 0.3s;
-     border: #d6a30bd0;
-     background-color: #d6a30bd0;
+     border: var(--thecolor);
+     background-color: var(--thecolor);
      color: rgb(255, 255, 255);
      border-radius: 4px;
      cursor: pointer;
-     font-size: medium;
+     font-size: 1vw;
      font-weight: bold;
-     margin-left: 35px;
+     margin-left: 4vw;
  }
- .contact_container{
-    display: flex;
-    justify-content: space-between;
+
+ .contact_container {
+     display: flex;
+     justify-content: space-between;
  }
-/* hr{
+
+ .contact_container:hover {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     color: white;
+ }
+
+ /* hr{
     color: black;
     font-weight: bolder;
 } */
-.phone-number{
-    background-color: transparent;
-    border: none;
-    text-decoration: underline;
-    color: #d6a30bd0;
-    font-weight: bold;
+ .phone-number {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: transparent;
+     border: none;
+     text-decoration: underline;
+     color: var(--thecolor);
+     font-weight: bold;
+     font-size: .85vw;
+ }
+
+ .phone-number:hover {
+     color: lightgray;
  }
 
  .interested {
-     background-color: transparent;
-     color: #d6a30bd0;
+    background-color: var(--thecolor);
+    color: white;
      font-weight: bold;
-     padding: 10px 20px;
-     border: solid 2px #d6a30bd0;
-     /* border-radius: 5px; */
+     font-size: .85vw;
+     padding: .4vw .7vw;
      cursor: pointer;
+     border: solid 2px var(--thecolor);
      transition: background-color 0.3s ease;
  }
 
  .interested:hover {
-     /* border: solid 2px #0056b3;
-     color: #0056b3; */
-     background-color:  #d6a30bd0;
-     /* opacity: 0.5; */
-     color: white
+    border: solid 2px var(--thecolor);
+     background-color: transparent;
+     color: var(--thecolor);
+     
  }
 
  .delete-btn {
-    position: absolute;
-    top: 5%;
-    left: 40%;
-    background-color: transparent;
+     position: absolute;
+     top: 5%;
+     left: 40%;
+     background-color: transparent;
      border: none;
-     border-radius: 20px;
-    cursor: pointer;
-    height: 55px;
-    z-index: 2;
-}
+     cursor: pointer;
+     height: 6vh;
+     z-index: 2;
+ }
 
-.delete-btn:hover {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
+ .delete-btn:hover {
+     background-color: transparent;
+     border: none;
+     cursor: pointer;
+ }
 
-.trash-img {
-    height: 35px;
-    z-index: 2;
-}
+ .trash-img {
+     height: 5vh;
+     z-index: 2;
+ }
 
-.trash-img:hover {
-    height: 45px;
-}
+ .trash-img:hover {
+     height: 6vh;
+ }
 
  .sold-btn {
-    position: absolute;
-    top: 5%;
-    left: 75%;
-    background-color: transparent;
-    border: none;
-    border-radius: 40px;
+     position: absolute;
+     top: 5%;
+     left: 75%;
+     background-color: transparent;
+     border: none;
      cursor: pointer;
-     height: 55px;
+     height: 6vh;
      z-index: 2;
  }
 
@@ -182,49 +209,45 @@
  }
 
  .sold-img {
-     height: 50px;
+     height: 5.5vh;
      z-index: 2;
  }
 
  .sold-img:hover {
-     height: 60px;
+     height: 6.5vh;
  }
 
  .edit-img {
-     height: 30px;
+     height: 5vh;
      z-index: 2;
  }
 
  .edit-img:hover {
-     height: 40px;
+     height: 6vh;
  }
 
  .edit-btn {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    background-color: transparent;
+     position: absolute;
+     top: 5%;
+     left: 5%;
+     background-color: transparent;
      border: none;
-     border-radius: 20px;
      cursor: pointer;
-     height: 55px;
+     height: 6vh;
      z-index: 2;
  }
 
- /* .edit-btn:hover {
-    height:55px
- } */
+
 
  .admin-btn-container {
-    background-color: rgba(240, 240, 240, 0.388);
-     /* margin: -10px 0px; */
+     background-color: rgba(240, 240, 240, 0.388);
      position: absolute;
-    top: 5%;
-    left: 0%;
+     top: 5%;
+     left: 0%;
      display: flex;
      justify-content: space-between;
      align-items: center;
      width: 100%;
-     height: 65px;
+     height: 7.5vh;
      z-index: 2;
  }

@@ -217,7 +217,7 @@ function SearchBar({
         >
           <i
             className="fa-solid fa-filter-circle-xmark"
-            style={{ color: "#ffffff", fontSize: "25px" }}
+            style={{ color: "#ffffff", fontSize: "1.3vw" }}
           ></i>
         </button>
       </div>

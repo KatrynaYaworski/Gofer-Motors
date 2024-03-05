@@ -96,7 +96,10 @@ function Home() {
             </p>
           </div>
         </div>
-
+        <div className={styles.reviews_container}>
+          <hr />
+          <div className="elfsight-app-f758bd66-983b-415b-97cd-0c676468ba9f" data-elfsight-app-lazy></div>
+        </div>
         <GoferLocationSection />
       </div>
     </div>

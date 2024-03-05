@@ -153,7 +153,8 @@ function Header() {
             </span>
           </Link>
         </span>
-        <span className={styles.nav_bottom_right_container}>
+        {/*  ~~V~~ Login / Register link ~~V~~ */}
+        {/* <span className={styles.nav_bottom_right_container}>
           {state.token ? (
             <span
               className={`${styles.nav_item_btn} ${
@@ -188,10 +189,8 @@ function Header() {
               closeModal={closeModal}
             />
           </Modal>
-          {/* <Link to="/authentication" style={{ textDecoration: "none" }}>
-        <span className="header_login">Login</span>
-      </Link> */}
-        </span>
+          
+        </span> */}
       </nav>
     </div>
   );

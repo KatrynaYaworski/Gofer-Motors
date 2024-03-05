@@ -228,8 +228,8 @@ function Footer() {
                 </Link>
               </div>
               <div className={styles.nav_group}>
-               
-                  {state.token ? (
+              {/*  ~~V~~ Login / Register link ~~V~~ */}
+                  {/* {state.token ? (
                     <span
                       className={`${styles.nav_item} ${
                         isModalOpen ? styles.modalOpen : ""
@@ -253,7 +253,7 @@ function Footer() {
                       {" "}
                       <span /> Log in / Register
                     </span>
-                  )}
+                  )} */}
 
                   <Modal isOpen={isModalOpen} closeModal={closeModal}>
                     <Login

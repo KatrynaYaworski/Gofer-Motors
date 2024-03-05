@@ -5,13 +5,14 @@ import axios from "axios";
 import soldImage from "../../../assets/sold.png";
 import editImage from "../../../assets/edit.png";
 import trashImage from "../../../assets/recycle-bin.png";
+import { Link } from "react-router-dom";
 
 function InventoryCard({ car, getCars }) {
   const { state } = useContext(AuthContext);
 
   const carImage = require(`../../../assets/car_images/${car.make}_${car.model}.jpg`);
-  
 
+  const phoneNumber = "+9562585021";
   const handleEditClick = () => {
     // event.stopPropagation();
     console.log("edit button clicked");
@@ -35,23 +36,23 @@ function InventoryCard({ car, getCars }) {
   return (
     <div className="car_card">
       <span className="car_image_container">
-      {(state.token && state.isadmin === true) || state.isadmin === "true" ? (
-        <div className="admin-btn-container">
-          <button className="edit-btn">
-            <img className="edit-img" src={editImage} alt="" />
-          </button>
-          <button className="delete-btn" onClick={handleDeleteClick}>
-            {" "}
-            <img className="trash-img" src={trashImage} alt="" />
-          </button>
-          <button className="sold-btn" onClick={handleEditClick}>
-            <img className="sold-img" src={soldImage} alt="" />
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
-      
+        {(state.token && state.isadmin === true) || state.isadmin === "true" ? (
+          <div className="admin-btn-container">
+            <button className="edit-btn">
+              <img className="edit-img" src={editImage} alt="" />
+            </button>
+            <button className="delete-btn" onClick={handleDeleteClick}>
+              {" "}
+              <img className="trash-img" src={trashImage} alt="" />
+            </button>
+            <button className="sold-btn" onClick={handleEditClick}>
+              <img className="sold-img" src={soldImage} alt="" />
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+
         <img src={carImage} className="carImageCard" alt="car" />
       </span>
 
@@ -59,9 +60,7 @@ function InventoryCard({ car, getCars }) {
         <span className="car_title">
           {car.year} {car.make} {car.model}
         </span>
-        <span className="car_body_type">
-          {car.body_type}
-        </span>
+        <span className="car_body_type">{car.body_type}</span>
         <span className="car_miles_price_container">
           <span className="car_miles">12,141 mi</span>
           <span className="car_price">${car.sticker_price} Cash Price</span>
@@ -69,12 +68,17 @@ function InventoryCard({ car, getCars }) {
         </span>
         <span>
           <hr />
-        <span className="contact_container">
-          <button className="phone-number">(956) 258-5021</button>
-          <button className="interested">Request Info</button>
-        </span>
-          <hr />
+          <span className="contact_container">
+            <a href={`tel:${phoneNumber}`} className="phone-number">
+              (956)-258-5021
+            </a>
+
+            <Link to="/contact" style={{ textDecoration: "none" }}>
+              <div className="interested">Request Info</div>
+            </Link>
           </span>
+          <hr />
+        </span>
         <p className="location">Alamo, TX</p>
       </div>
     </div>

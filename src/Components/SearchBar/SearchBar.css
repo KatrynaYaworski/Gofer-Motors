@@ -14,23 +14,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 2vh;
   }
   
   .titleSearch {
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 5vh;
+    margin-bottom: .5vh;
     font-weight: bold;
     color: #333;
   }
   
   .search input[type="text"] {
-    padding: 10px;
+    padding: 1vh;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    margin: 5px;
-    width: 200px;
-    font-size: 16px;
+    border-radius: .3vh;
+    margin: 1vh;
+    width: 12vw;
+    font-size: 1.75vh;
     outline: none;
     transition: border 0.3s;
   }
@@ -39,17 +39,17 @@
     border-color: #d6a30bd0;
   }
   
-  .search_icon {
-    margin-top: 10px;
+  /* .search_icon {
+    margin-top: 1vw;
     cursor: pointer;
     color: #333;
     font-size: 24px;
     transition: color 0.3s;
-  }
+  } */
   
-  .search_icon:hover {
+  /* .search_icon:hover {
     color: #d6a30bd0;
-  }
+  } */
   
   .searchTitleResponse {
     font-size: 18px;
@@ -73,30 +73,34 @@
     justify-content: space-around;
   }
   .filter_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background-color: #d6a30bd0;
-    border-radius: 22px;
-    width: 50px;
-    height: 50px;
+    border-radius: 5vw;
+    width: 2.5vw;
+    height: 5vh;
     cursor: pointer;
   }
 
   .year-container>select{
-    padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    margin: 5px;
-    width: 200px;
-    font-size: 16px;
     outline: none;
     transition: border 0.3s;
     background-color: white;
     color: grey;
     cursor: pointer;
+
+    padding: 1vh;
+    border: 1px solid #ddd;
+    border-radius: .3vh;
+    margin: 1vh;
+    width: 12vw;
+    font-size: 1.75vh;
 }
 
 .radio-sold-btns-container {
-
 }
 /* .w_so_top_left_container{
   display: flex;
@@ -107,32 +111,22 @@
 .radio-sold-btns-container label{
 justify-content: center;
 align-items: center;
-padding: 10px 10px;
+padding: 1.4vh 1vw;
 border: #dcdbdb;
 transition: all 0.3s;
 background-color: #c3c1c19f;;
 color: #333;
-border-radius: 4px;
-width: 59px;
+border-radius: .5vh;
+width: 1vw;
 cursor: pointer;
-font-size: medium;
+font-size: 1vw;
 font-weight: bold;
-margin-right: 10px;
+margin-right: 1vw;
 }
 .radio-sold-btns-container label:hover{
-  justify-content: center;
-  align-items: center;
-  padding: 10px 10px;
-  transition: all 0.3s;
   border: #d6a30bd0;
   background-color: #d6a30bd0;
   color: rgb(255, 255, 255);
-  border-radius: 4px;
-  width: 59px;
-  cursor: pointer;
-  font-size: medium;
-  font-weight: bold;
-  margin-right: 10px;
 }
 
 .radio-sold-btns-container input[type="radio"]{
