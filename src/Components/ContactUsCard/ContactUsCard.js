@@ -2,16 +2,29 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./ContactUsCard.module.css";
+import ReCAPTCHA from "react-google-recaptcha";
+import { ErrorMessage } from "formik";
 
 function ContactUsCard() {
+  const key = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+  const secret = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+
   const [carListings, setCarListings] = useState([]);
   const [selectedCar, setSelectedCar] = useState("");
+
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
+
+  const handleVerify = (response) => {
+    console.log('ReCaptcha verified:', response);
+    setIsVerified(true);
+  };
 
   const location = useLocation();
 
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
     lastName: "",
     phone: "",
     email: "",
@@ -38,17 +51,29 @@ function ContactUsCard() {
   };
 
   const handleSubmit = () => {
-    const ContactData = {
-      Name: formData.name,
-      Last_Name: formData.lastName,
-      Phone: formData.phone,
-      Email: formData.email,
-      Comments: formData.comments,
-      car_id: selectedCar,
+    setErrorMessage("")
+    setSuccessMessage("")
+    if (!isVerified) {
+      console.log('ReCaptcha not verified');
+      setErrorMessage("ReCaptcha not verified, please try again");
+      return;
+    }
+    if (!formData.firstName || !formData.lastName || !formData.phone || !formData.email || !selectedCar) {
+      setErrorMessage('Please fill out all fields');
+      return;
+    }
+
+    const contactData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      phone: formData.phone,
+      email: formData.email,
+      comments: formData.comments,
+      carId: selectedCar,
     };
 
     axios
-      .post("http://localhost:4000/contact_information", ContactData)
+      .post("http://localhost:4000/contact_information", contactData)
       .then((response) => {
         setFormData({
           firstName: "",
@@ -66,6 +91,7 @@ function ContactUsCard() {
           "Error post request to Contact data:",
           error.response.data
         );
+        setErrorMessage("Your Message could not be sent. Please try back at another time")
       });
   };
 
@@ -75,7 +101,7 @@ function ContactUsCard() {
         className={styles.name}
         placeholder="First Name"
         name="firstName"
-        value={formData.name}
+        value={formData.firstName}
         onChange={handleInputChange}
       />
       <input
@@ -118,6 +144,13 @@ function ContactUsCard() {
         value={formData.comments}
         onChange={handleInputChange}
       />
+
+      <ReCAPTCHA
+      sitekey={key}
+      onChange={handleVerify}
+      className={styles.recaptcha}
+      ></ReCAPTCHA>
+
       <span className={styles.data_clause}>
         By submitting my contact information I give permission for Gofer Motors
         to contact me using the phone number or email I provide. This includes
@@ -139,10 +172,13 @@ function ContactUsCard() {
       {successMessage && (
         <p className={styles.success_message}>{successMessage}</p>
       )}
+      {ErrorMessage && (
+        <p className={styles.error_message}>{errorMessage}</p>
+      )}
         <div className={styles.send_btn_container}>
-      <button className={styles.send_btn} onClick={handleSubmit}>
+      {isVerified && <button className={styles.send_btn} onClick={handleSubmit}>
         Send Message
-      </button>
+      </button>}
       </div>
     </div>
   );

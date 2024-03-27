@@ -3,6 +3,7 @@ import styles from "./ContactUs.module.css";
 import ContactUsCard from "../ContactUsCard/ContactUsCard";
 import GoferLocationSection from "../HomePage/GoferLocationSection";
 
+
 import displayImgOne from "../../assets/contact_us_images/standing-by-car-talking.jpg";
 import displayImgTwo from "../../assets/contact_us_images/customer-service-woman-working-on-a-phone-call-2022-09-08-19-20-14-utc.jpg";
 import displayImgThree from "../../assets/contact_us_images/test_drive2.jpg";
@@ -11,6 +12,8 @@ import displayImgThree from "../../assets/contact_us_images/test_drive2.jpg";
 import navImage from "../../assets/contact_us_images/joyful-talk-of-the-woman-and-car-showroom-manager-2023-11-27-05-33-28-utc.jpg";
 
 function ContactUs() {
+  
+
   const customStyle = {
     display: "flex",
     flexDirection: "row-reverse",
@@ -37,6 +40,18 @@ function ContactUs() {
     };
   }, []);
 
+    // useEffect(() => {
+    //   const script = document.createElement('script');
+    //   script.src = 'https://cdn.ampproject.org/v0/amp-iframe-0.1.js';
+    //   script.defer = true;
+    //   script.async = true;
+    //   document.head.appendChild(script);
+  
+    //   return () => {
+    //     document.head.removeChild(script);
+    //   };
+    // }, []);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.nav_img_container}>
@@ -62,7 +77,7 @@ function ContactUs() {
         />
       </div>
 
-            <hr />
+    <hr className={styles.line} />
       <div className={styles.visit_container}>
         <div className={styles.visit_container_left}>
           <div className={styles.visit_title}>
@@ -107,7 +122,7 @@ function ContactUs() {
         </div>
       </div>
 
-      <hr />
+      <hr className={styles.line} />
 
       <div className={styles.why_gofer_container}>
         <div className={styles.why_gofer_title}>Why choose Gofer Motors?</div>
@@ -150,6 +165,7 @@ function ContactUs() {
           class="elfsight-app-67d05697-7080-45d3-9152-5d696a678951"
           data-elfsight-app-lazy
         ></div>
+{/* <iframe src='https://cdn.trustindex.io/amp-widget.html#a5f9016264d75400e87661c1b6a' sandbox='allow-scripts allow-same-origin' layout='fixed-height' width='50%' height='407' resizable='resizable'><span overflow></span></iframe> */}
     </div>
   );
 }

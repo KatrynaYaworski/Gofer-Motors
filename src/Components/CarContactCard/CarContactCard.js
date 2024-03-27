@@ -38,17 +38,17 @@ function CarContactCard() {
   };
 
   const handleSubmit = () => {
-    const ContactData = {
-      Name: formData.name,
-      Last_Name: formData.lastName,
-      Phone: formData.phone,
-      Email: formData.email,
-      Comments: formData.comments,
-      car_id: selectedCar,
+    const contactData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      phone: formData.phone,
+      email: formData.email,
+      comments: formData.comments,
+      carId: selectedCar,
     };
 
     axios
-      .post("http://localhost:4000/contact_information", ContactData)
+      .post("http://localhost:4000/contact_information", contactData)
       .then((response) => {
         setFormData({
           name: "",

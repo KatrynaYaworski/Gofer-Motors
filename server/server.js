@@ -19,20 +19,21 @@ app.use(express.static('public'));
 //endpoints
 const {
     getInventory,
-    getReviews,
     createContact,
     getUserAdmin,
     sellCar,
     addCar, 
     deleteCar
+    
 } = require('./controllers/controller.js');
 
 const  {seed } = require('./controllers/seed.js');
 
 const { login, register } = require('./controllers/auth.js');
 
+const { verifyRecaptcha } = require('./controllers/recaptcha.js');
+
 app.get("/car_inventory", getInventory);
-app.get("/user_reviews", getReviews);
 app.get("/users/:username", getUserAdmin)
 
 app.post('/seed', seed);
@@ -40,6 +41,7 @@ app.post("/register", register);
 app.post("/login", login);
 app.post("/contact_information", createContact)
 app.post("/car_inventory", addCar)
+app.post("/recaptcha", verifyRecaptcha)
 
 app.delete("/car_inventory/:carId", deleteCar)
 

@@ -69,7 +69,6 @@
     font-size: .7vw;
     color: white;
     padding: .5vw;
-    margin-top: -2vh;
 }
 
 .privacyp_link {
@@ -83,8 +82,15 @@
     text-decoration: underline;
 }
 
-.successMessage {
-    color: #20c997;
+.error_message {
+    color: var(--error-red);
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.success_message {
+    color: var(--secondary-color);
     margin-bottom: 18px;
     text-align: center;
     font-weight: 600;
@@ -94,3 +100,23 @@
 .contact_card_container input::placeholder {
     color: #a9a9a9;
 }
+
+
+/* Google ReCAPTCHA Styles */
+.recaptcha{
+    background-color: var(--secondary-color);
+}
+
+/* .grecaptcha-badge { opacity:0;}  */
+
+
+/* .anchor-light{
+    background-color: rgb(8, 24, 241);
+}
+
+@media only screen and (max-width: 500px) {
+    .g-recaptcha {
+        transform:scale(0.77);
+        transform-origin:0 0;
+    }
+} */

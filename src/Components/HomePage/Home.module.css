@@ -15,7 +15,6 @@
 
 }
 
-
 .hero_container {
   position: relative;
   /* min-height: 100vh; */
@@ -49,7 +48,7 @@
   transform: translate(-50%, -50%);
   text-align: right;
   color: white;
-  width: 95%;
+  width: 85%;
   padding-right: 5vw;
 }
 

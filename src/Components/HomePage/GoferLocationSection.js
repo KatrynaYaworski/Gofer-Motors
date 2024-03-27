@@ -12,6 +12,8 @@ const GoferLocationSection = ({ lineStyleProp, styleProp, detailsContainerStyleP
   const phoneNumber = "+9562585021";
   const email = "mailto:y.gofer@gofermotors.com";
   const whatsAppPhone = "9565338752";
+  // const whatsAppPhone = "8176800478"
+  
 
   const handleWhatsAppClick = () => {
     const whatsappUrl = `https://wa.me/${whatsAppPhone}?action=call`;

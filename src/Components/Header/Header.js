@@ -22,6 +22,7 @@ function Header() {
 
   const handleWhatsAppClick = () => {
     const whatsAppPhone = '9565338752';
+    // const whatsAppPhone = "8176800478"
     const whatsappUrl = `https://wa.me/${whatsAppPhone}?action=call`;
     window.open(whatsappUrl, '_blank');
   }

@@ -3,10 +3,9 @@ import { useEffect } from 'react';
 const GoogleReviews = () => {
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://cdn.trustindex.io/loader.js?385902226c0553324126a6a330d';
+    script.src = 'https://cdn.ampproject.org/v0/amp-iframe-0.1.js';
     script.defer = true;
     script.async = true;
-
     document.head.appendChild(script);
 
     return () => {

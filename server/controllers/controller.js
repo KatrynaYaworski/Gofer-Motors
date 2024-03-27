@@ -1,14 +1,15 @@
 require("dotenv").config();
-
+const axios = require("axios");
+const nodemailer = require('nodemailer');
 const { sequelize } = require("../util/database");
 const { RECEIVING_EMAIL, SENDING_EMAIL, EMAIL_PASSWORD } = process.env;
 
 function sendEmail(customerInfo) {
-  const { first_name, last_name, phone, email, comments, car_id, model, year } =
+  const { firstName, lastName, phone, email, comments, car_id, model, year } =
     customerInfo;
 
   const transporter = nodemailer.createTransport({
-    service: "outlook",
+    service: "gmail",
     auth: {
       user: SENDING_EMAIL,
       pass: EMAIL_PASSWORD,
@@ -18,9 +19,9 @@ function sendEmail(customerInfo) {
   const mailOptions = {
     from: SENDING_EMAIL,
     to: RECEIVING_EMAIL,
-    subject: `${first_name} ${last_name} has sent an inquiry!`,
+    subject: `${firstName} ${lastName} has sent an inquiry!`,
     text: `
-    Name: ${first_name} ${last_name}
+    Name: ${firstName} ${lastName}
     Phone: ${phone}
     Email: ${email}
     Comments: ${comments}
@@ -111,25 +112,36 @@ module.exports = {
         .catch((err) => res.status(500).send(err));
     },
 
-  getReviews: (req, res) => {
-    sequelize
-      .query(
-        `
-    SELECT * FROM user_reviews;
-  `
-      )
-      .then((dbRes) => res.status(200).send(dbRes[0]))
-      .catch((err) => res.status(500).send(err));
+
+  verifyRecaptcha: (req, res) => {
+    const { token } = req.body;
+    axios
+      .post("https://www.google.com/recaptcha/api/siteverify", null, {
+        params: {
+          secret: "YOUR_SECRET_KEY",
+          response: token,
+        },
+      })
+      .then((response) => {
+        if (response.data.success) {
+          res.status(200).json({ success: true });
+        } else {
+          res.status(400).json({ success: false, message: "reCAPTCHA verification failed" });
+        }
+      })
+      .catch((error) => {
+        res.status(500).json({ success: false, message: "Internal server error" });
+      });
   },
 
   createContact: (req, res) => {
-    const { Name, Last_Name, Phone, Email, Comments, car_id } = req.body;
+    const { firstName, lastName, phone, email, comments, carId } = req.body;
 
     sequelize
       .query(
         `
-    INSERT INTO contact_information (Name, Last_Name, Phone, Email, Comments, car_id)
-    VALUES ('${Name}', '${Last_Name}','${Phone}', '${Email}', '${Comments}', ${car_id})
+    INSERT INTO contact_information (first_name, last_name, phone, email, comments, car_id)
+    VALUES ('${firstName}', '${lastName}','${phone}', '${email}', '${comments}', ${carId})
     RETURNING *
 
             `
@@ -144,35 +156,3 @@ module.exports = {
       });
   },
 };
-
-// deleteTask:(req,res) => {
-//   const {task_id} = req.params
-//   console.log(task_id)
-//   sequelize.query(`
-//       DELETE FROM tasks
-//       WHERE task_id = ${task_id};
-//   `)
-//   .then(dbRes => res.status(200).send(dbRes[0]))
-//   .catch(err => res.status(500).send(err))
-// },
-
-// updateTask:(req,res) => {
-//   const taskId = req.params.task_id;
-//   const {task_description, task_date, task_status} = req.body;
-
-//   sequelize.query(`
-//   UPDATE tasks
-//   SET
-//   task_description= '${task_description}',
-//   task_date='${task_date}',
-//   task_status='${task_status}'
-//   WHERE task_id= '${taskId}';
-//   `)
-//   .then(dbRes => {
-//     res.status(200).send(dbRes[0])
-// })
-// .catch(err => {
-//   console.log(err)
-//   res.status(400).send(err)
-// })
-// }
