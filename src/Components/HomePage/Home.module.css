@@ -235,3 +235,7 @@
 .contact_btn:hover::before {
   opacity: 1;
 }
+
+#reviews-container a {
+  display: none !important;
+}

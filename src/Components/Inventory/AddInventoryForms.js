@@ -8,7 +8,7 @@ import image from "../../assets/coming_soon.jpeg";
 const AddInventoryForms = ({ closeModal, getCars, cars }) => {
   const [inventory, setInventory] = useState([]);
   const [showTable, setShowTable] = useState(false);
-  
+
   // const [makeLi, setMakeLi] = useState("");
   // const [modelLi, setModelLi] = useState("");
   // const [priceLi, setPriceLi] = useState("");
@@ -17,7 +17,7 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
   // const [descriptionLi, setDescriptionLi] = useState("");
   // const [soldLi, setSoldLi] = useState("");
   // const [milesLi, setMilesLi] = useState("");
-  // const [imageUrlLi, setImageUrlLi] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const [error, setError] = useState("");
 
@@ -30,58 +30,31 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
     sold: false,
     mileage: "",
     color: "",
-    interior_color: "", 
-    body_type: "", 
-    title: "", 
-    engine: "", 
-    vin_number: "", 
+    interior_color: "",
+    body_type: "",
+    title: "",
+    engine: "",
+    vin_number: "",
     stock_number: "",
     image_url: "",
   };
 
-  const onSubmit = (values, {resetForm}) => {
-    const addCar = () => {
-      const newCar = {
-        make: values.make,
-        model: values.model,
-        sticker_price: values.sticker_price,
-        year: values.year,
-        description: values.description,
-        sold: values.sold,
-        mileage: values.mileage,
-        color: values.color,
-        interior_color: values.interior_color, 
-        body_type: values.body_type, 
-        title: values.title, 
-        engine: values.engine, 
-        vin_number: values.vin_number, 
-        stock_number: values.stock_number,
-        image_url: values.image_url,
-      };
-      if (newCar.make !== "") {
-        setInventory([...inventory, newCar]);
-      }
-    };
+  const onSubmit = async (values, { resetForm }) => {
     if (values.make === "" || values.model === "" || values.year === "") {
       setError("Please enter a value for all fields*");
       console.log(values);
     } else {
-      if (values.image_url === "") {
-        values.image_url = image;
-      }
-      console.log(values);
-      axios
-        .post(`http://localhost:4000/car_inventory`, values, {})
-        .then((res) => {
-          addCar();
-          getCars();
-          resetForm(); 
-          // setFieldValue("sold", false);
-          // setFieldValue("description", "");
-          setShowTable(true);
-          console.log("*****");
-          console.log(inventory);
-        });
+      const newCar = {...values, image_url: imageUrl}
+      axios.post(`/car_inventory`, newCar).then((res) => {
+        setInventory([...inventory, newCar]);
+        getCars();
+        resetForm();
+        // setFieldValue("sold", false);
+        // setFieldValue("description", "");
+        setShowTable(true);
+        console.log("*****");
+        console.log(inventory);
+      });
     }
   };
 
@@ -93,51 +66,54 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
         onSubmit={handleSubmit}
         action=""
       >
-        { showTable ?
-        <table className={styles.car_array_container}>
-          <thead>
-            <tr>
-              <th>Make</th>
-              <th>Model</th>
-              <th>Sold</th>
-              <th>Price</th>
-              <th>Engine</th>
-              <th>Year</th>
-              <th>Mileage</th>
-              <th>Color</th>
-              <th>Interior Color</th>
-              <th>Body Type</th>
+        {showTable ? (
+          <table className={styles.car_array_container}>
+            <thead>
+              <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Sold</th>
+                <th>Price</th>
+                <th>Engine</th>
+                <th>Year</th>
+                <th>Mileage</th>
+                <th>Color</th>
+                <th>Interior Color</th>
+                <th>Body Type</th>
 
-              <th>Title</th>
-              <th>Vin</th>
-              <th>Stock #</th>
+                <th>Title</th>
+                <th>Vin</th>
+                <th>Stock #</th>
 
-              {/* <th>Image URL</th> */}
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {inventory.map((car, carIndex) => (
-              <tr key={carIndex}>
-                <td>{car.make}</td>
-                <td>{car.model}</td>
-                <td>{car.sold}</td>
-                <td>{car.sticker_price}</td>
-                <td>{car.engine}</td>
-                <td>{car.year}</td>
-                <td>{car.mileage}</td>
-                <td>{car.color}</td>
-                <td>{car.interior_color}</td>
-                <td>{car.body_type}</td>
-                <td>{car.title}</td>
-                <td>{car.vin_number}</td>
-                <td>{car.stock_number}</td>
-                {/* <td>{car.image_url}</td> */}
-                <td>{car.description}</td>
+                {/* <th>Image URL</th> */}
+                <th>Description</th>
               </tr>
-            ))}
-          </tbody>
-        </table> : ''}
+            </thead>
+            <tbody>
+              {inventory.map((car, carIndex) => (
+                <tr key={carIndex}>
+                  <td>{car.make}</td>
+                  <td>{car.model}</td>
+                  <td>{car.sold}</td>
+                  <td>{car.sticker_price}</td>
+                  <td>{car.engine}</td>
+                  <td>{car.year}</td>
+                  <td>{car.mileage}</td>
+                  <td>{car.color}</td>
+                  <td>{car.interior_color}</td>
+                  <td>{car.body_type}</td>
+                  <td>{car.title}</td>
+                  <td>{car.vin_number}</td>
+                  <td>{car.stock_number}</td>
+                  {/* <td>{car.image_url}</td> */}
+                  <td>{car.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          ""
+        )}
 
         <section className={styles.make_model_container}>
           <input
@@ -167,18 +143,22 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
           <input
             className={styles.inputs}
             value={values.image_url}
-            onChange={handleChange}
-            // onChange={(e) => {
-            //   setImageUrlLi(e.target.value);
-            //   handleChange(e);
-            // }}
+            onChange={async (e) => {
+              const data = new FormData() ;
+              data.append('file', e.target.files[0]);
+              const { data: imageURL } = await axios.post(
+                "/upload_image",
+                data
+              );
+              setImageUrl(imageURL)
+            }}
             name="image_url"
             placeholder="Image URL"
-            type="text"
+            type="file"
           />
-          </section>
-{/* here! */}
-          <section className={styles.make_model_container}>
+        </section>
+        {/* here! */}
+        <section className={styles.make_model_container}>
           <select
             className={styles.inputs}
             value={values.color}
@@ -204,7 +184,6 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
             <option value="Gold">Gold</option>
             <option value="Yellow">Yellow</option>
             <option value="Orange">Orange</option>
-
           </select>
           <select
             className={styles.inputs}
@@ -217,7 +196,7 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
             name="interior_color"
             placeholder="Interior Color"
             type="text"
-            >
+          >
             <option value="">Select Interior Color</option>
             <option value="Black">Black</option>
             <option value="Grey">Grey</option>
@@ -231,7 +210,6 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
             <option value="Red">Red</option>
             <option value="Blue">Blue</option>
             <option value="Green">Green</option>
-
           </select>
           <select
             className={styles.inputs}
@@ -255,9 +233,9 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
             <option value="Wagon">Wagon</option>
             <option value="Minivan">Minivan</option>
           </select>
-          </section>
+        </section>
 
-          <section className={styles.make_model_container}>
+        <section className={styles.make_model_container}>
           <select
             className={styles.inputs}
             value={values.title}
@@ -299,8 +277,8 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
             placeholder="Stock Number"
             type="text"
           />
-          </section>
-        
+        </section>
+
         <section className={styles.price_container}>
           <input
             className={styles.inputs}
@@ -406,8 +384,9 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
     <span className={styles.new_car_container}>
       <h1 className={styles.new_car_title}> Add Inventory </h1>
       <span className={styles.alert_message}>
-        **for now we must ensure the make and model mirrors EXACTLY like one that is already found in the DB since the
-        image URL is temporarily rendered dynamically**
+        **for now we must ensure the make and model mirrors EXACTLY like one
+        that is already found in the DB since the image URL is temporarily
+        rendered dynamically**
       </span>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {formReturn}

@@ -36,7 +36,7 @@ function Inventory() {
   // useEffect(() => {
   //   if (state.userId) {
   //     axios
-  //       .get(`http://localhost:4000/users/${state.username}`)
+  //       .get(`/users/${state.username}`)
   //       .then((response) => {
   //         setUserData(response.data);
   //         console.log(`RESPONSE USER DATA ${response.data}`);
@@ -58,7 +58,7 @@ function Inventory() {
 
   function getCars() {
     axios
-      .get("http://localhost:4000/car_inventory")
+      .get("/car_inventory")
       .then((response) => {
         console.log("Cars Data", response.data);
         setCars(response.data);

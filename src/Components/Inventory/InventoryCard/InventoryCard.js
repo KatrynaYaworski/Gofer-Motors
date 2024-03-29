@@ -10,14 +10,12 @@ import { Link } from "react-router-dom";
 function InventoryCard({ car, getCars }) {
   const { state } = useContext(AuthContext);
 
-  const carImage = require(`../../../assets/car_images/${car.make}_${car.model}.jpg`);
-
   const phoneNumber = "+9562585021";
   const handleEditClick = () => {
     // event.stopPropagation();
     console.log("edit button clicked");
     axios
-      .put(`http://localhost:4000/car_inventory/${car.car_id}`)
+      .put(`/car_inventory/${car.car_id}`)
       .then((res) => {
         console.log(res.data);
         getCars();
@@ -27,7 +25,7 @@ function InventoryCard({ car, getCars }) {
     // event.stopPropagation();
     console.log("delete button clicked");
     axios
-      .delete(`http://localhost:4000/car_inventory/${car.car_id}`)
+      .delete(`/car_inventory/${car.car_id}`)
       .then((res) => {
         console.log(res.data);
         getCars();
@@ -53,7 +51,7 @@ function InventoryCard({ car, getCars }) {
           ""
         )}
 
-        <img src={carImage} className="carImageCard" alt="car" />
+        <img src={car.image_url} className="carImageCard" alt="car" />
       </span>
 
       <div className="car_info">
@@ -62,7 +60,7 @@ function InventoryCard({ car, getCars }) {
         </span>
         <span className="car_body_type">{car.body_type}</span>
         <span className="car_miles_price_container">
-          <span className="car_miles">12,141 mi</span>
+          <span className="car_miles">{car.mileage} mi</span>
           <span className="car_price">${car.sticker_price} Cash Price</span>
           {/* <span className="cash_price"></span> */}
         </span>

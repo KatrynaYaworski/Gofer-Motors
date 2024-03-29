@@ -26,7 +26,7 @@ const Login = ({ closeModal }) => {
       return
     }
     axios
-      .post(register ? "http://localhost:4000/register" : "http://localhost:4000/login", body)
+      .post(register ? "/register" : "/login", body)
       .then((res) => {
         dispatch({ type: "LOGIN", payload: res.data });
         console.log(res.data)

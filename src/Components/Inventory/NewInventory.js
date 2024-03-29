@@ -32,7 +32,7 @@ function NewInventory() {
 
   function getCars() {
     axios
-      .get("http://localhost:4000/car_inventory")
+      .get("/car_inventory")
       .then((response) => {
         console.log("Cars Data", response.data);
         setCars(response.data);

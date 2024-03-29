@@ -19,7 +19,7 @@ function CarContactCard() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/car_inventory")
+      .get("/car_inventory")
       .then((response) => setCarListings(response.data))
       .catch((error) => {
         console.error(
@@ -48,7 +48,7 @@ function CarContactCard() {
     };
 
     axios
-      .post("http://localhost:4000/contact_information", contactData)
+      .post("/contact_information", contactData)
       .then((response) => {
         setFormData({
           name: "",

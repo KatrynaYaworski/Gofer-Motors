@@ -118,10 +118,12 @@ function Home() {
           </div>
         </div>
         <hr className={styles.line} />
-        <div
-          class="elfsight-app-67d05697-7080-45d3-9152-5d696a678951"
-          data-elfsight-app-lazy
-        ></div>
+        <span id="reviews-container">
+          <div
+            class="elfsight-app-67d05697-7080-45d3-9152-5d696a678951"
+            data-elfsight-app-lazy
+          ></div>
+        </span>
         {/* <iframe src='https://cdn.trustindex.io/amp-widget.html#385902226c0553324126a6a330d' sandbox='allow-scripts allow-same-origin' layout='fixed-height' width='50%' height='424' resizable='resizable'><span overflow></span></iframe> */}
         <GoferLocationSection />
       </div>

@@ -21,9 +21,9 @@ module.exports = {
                         car_id SERIAL PRIMARY KEY,
                         make VARCHAR(100),
                         model VARCHAR(30),
-                        sticker_price INTEGER,
-                        year INTEGER,
-                        mileage INTEGER,
+                        sticker_price  VARCHAR(30),
+                        year  VARCHAR(4),
+                        mileage  VARCHAR(10),
                         color VARCHAR(20),
                         interior_color VARCHAR(20),
                         body_type VARCHAR(20),
@@ -32,7 +32,8 @@ module.exports = {
                         vin_number VARCHAR(30),
                         stock_number VARCHAR(15),
                         description TEXT,
-                        sold BOOLEAN DEFAULT false
+                        sold BOOLEAN DEFAULT false,
+                        image_url TEXT
                     );
                     
                     CREATE TABLE contact_information (

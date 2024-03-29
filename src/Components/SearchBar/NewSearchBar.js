@@ -13,7 +13,7 @@ function SearchBar({ model, year, make, cars, soldStatus, setSoldStatus }) {
   // if(model) params.Model = model;
   // if(year) params.Year = year;
 
-  //   axios.get("http://localhost:4000/car_inventory", {params})
+  //   axios.get("/car_inventory", {params})
   //     .then(response => {
   //       const filteredCars = response.data.filter(car =>
   //         (!make || car.make === make) &&

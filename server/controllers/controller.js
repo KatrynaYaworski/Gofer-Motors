@@ -40,16 +40,17 @@ function sendEmail(customerInfo) {
 
 module.exports = {
   addCar: (req, res) => {
-    const {make, model, sticker_price, year, description, sold, mileage, color, interior_color, body_type, title, engine, vin_number, stock_number} = req.body;
+    const {make, model, sticker_price, year, description, sold, mileage, color, interior_color, body_type, title, engine, vin_number, stock_number, image_url} = req.body;
+    console.log(req.body)
     sequelize
     .query(
       `
-      INSERT INTO car_inventory (make, model, sticker_price, year, mileage, color, interior_color, body_type, title, engine, vin_number, stock_number, description)
-              VALUES ('${make}', '${model}', ${sticker_price}, ${year}, ${mileage}, '${color}', '${interior_color}', '${body_type}', '${title}', '${engine}', '${vin_number}', '${stock_number}', '${description}')
+      INSERT INTO car_inventory (make, model, sticker_price, year, mileage, color, interior_color, body_type, title, engine, vin_number, stock_number, description, image_url)
+              VALUES ('${make}', '${model}', ${sticker_price}, '${year}', ${mileage}, '${color}', '${interior_color}', '${body_type}', '${title}', '${engine}', '${vin_number}', '${stock_number}', '${description}', '${image_url}')
       `
       )
       .then((dbRes) => res.status(200).send(dbRes[0]))
-      .catch((err) => res.status(500).send(err));
+      // .catch((err) => res.status(500).send(err));
     },
     deleteCar: (req, res) => {
       const { carId } = req.params;
