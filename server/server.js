@@ -2,6 +2,7 @@ require("dotenv").config({ path: "../.env" });
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+const path = require("path")
 const app = express();
 const AWS = require("aws-sdk");
 const fileUpload = require("express-fileupload");
@@ -18,14 +19,16 @@ const {
   REACT_APP_ACCESS_KEY_ID,
 } = process.env;
 
-// app.get('/', async (req, res) => {
-//     try {
-//         res.sendFile(path.join(__dirname, '../public/index.html'));
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send('Server error');
-//     }
-// });
+app.use(express.static(path.join(__dirname, '../build')))
+
+app.get('/', async (req, res) => {
+    try {
+        res.sendFile(path.join(__dirname, '../build/index.html'));
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
 
 //endpoints
 const {
