@@ -11,13 +11,6 @@ app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
 
-const {
-  S3_BUCKET_NAME,
-  S3_REGION,
-  S3_SECRET_ACCESS_KEY,
-  S3_ACCESS_KEY_ID,
-} = process.env;
-
 app.use(express.static(path.join(__dirname, '../build')))
 
 //endpoints
@@ -52,7 +45,7 @@ app.post("/upload_image", async (req, res) => {
     return res.status(400).send("No files were uploaded.");
   }
   const { file } = req.files;
-  console.log(S3_BUCKET_NAME)
+  console.log(process.env)
   AWS.config.update({
     accessKeyId: S3_ACCESS_KEY_ID,
     secretAccessKey: S3_SECRET_ACCESS_KEY,
