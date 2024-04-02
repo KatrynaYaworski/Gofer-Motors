@@ -38,7 +38,6 @@ const Login = () => {
         register ? setError("Username not available") : setError("Username or Password is incorrect") 
       });
 
-    console.log("submitHandler called");
   };
   return (
     <main>

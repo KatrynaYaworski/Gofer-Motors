@@ -34,10 +34,7 @@ function NewInventory() {
     axios
       .get("/car_inventory")
       .then((response) => {
-        console.log("Cars Data", response.data);
         setCars(response.data);
-        console.log("#####");
-        console.log(authState);
       })
       .catch((error) => {
         console.error("Error fetching cars data: ", error);
@@ -46,7 +43,6 @@ function NewInventory() {
   useEffect(() => {
     getCars();
   }, [authState.userId]);
-  console.log("Cars Map Data", cars);
 
   useEffect(() => {
     if (soldStatus === "Sold") {
@@ -79,7 +75,6 @@ useEffect(()=>{
             (carBody.includes(bodySearch) || !bodySearch) &&
             (carYear === +inventoryState.year || !inventoryState.year);
       })
-      console.log(filteredCars)
       const carResults = filteredCars.map((car) => (
       <InventoryCard key={car.car_id} car={car} getCars={getCars} />
       ));

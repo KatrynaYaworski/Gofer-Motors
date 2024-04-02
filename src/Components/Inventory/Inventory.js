@@ -60,10 +60,7 @@ function Inventory() {
     axios
       .get("/car_inventory")
       .then((response) => {
-        console.log("Cars Data", response.data);
         setCars(response.data);
-        console.log('#####')
-        console.log(state)
       })
       .catch((error) => {
         console.error("Error fetching cars data: ", error);
@@ -72,7 +69,6 @@ function Inventory() {
   useEffect(() => {
     getCars();
   }, [state.userId]);
-  console.log("Cars Map Data", cars);
 
   useEffect(() => {
     if (soldStatus === 'Sold') {

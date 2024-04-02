@@ -42,7 +42,6 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
   const onSubmit = async (values, { resetForm }) => {
     if (values.make === "" || values.model === "" || values.year === "") {
       setError("Please enter a value for all fields*");
-      console.log(values);
     } else {
       const newCar = {...values, image_url: imageUrl}
       axios.post(`/car_inventory`, newCar).then((res) => {
@@ -52,8 +51,6 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
         // setFieldValue("sold", false);
         // setFieldValue("description", "");
         setShowTable(true);
-        console.log("*****");
-        console.log(inventory);
       });
     }
   };

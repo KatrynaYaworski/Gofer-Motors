@@ -47,7 +47,6 @@ function ContactUsCard() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = captchaRef.current.getValue();
-    console.log({ token });
     captchaRef.current.reset();
 
     axios

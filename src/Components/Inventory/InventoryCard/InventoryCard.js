@@ -13,21 +13,17 @@ function InventoryCard({ car, getCars }) {
   const phoneNumber = "+9562585021";
   const handleEditClick = () => {
     // event.stopPropagation();
-    console.log("edit button clicked");
     axios
       .put(`/car_inventory/${car.car_id}`)
       .then((res) => {
-        console.log(res.data);
         getCars();
       });
   };
   const handleDeleteClick = () => {
     // event.stopPropagation();
-    console.log("delete button clicked");
     axios
       .delete(`/car_inventory/${car.car_id}`)
       .then((res) => {
-        console.log(res.data);
         getCars();
       });
   };
