@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d14d5538.chunk.css",
+    "main.js": "/static/js/main.1c9052e4.chunk.js",
+    "main.js.map": "/static/js/main.1c9052e4.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c86a5587.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c86a5587.js.map",
+    "static/js/2.019189db.chunk.js": "/static/js/2.019189db.chunk.js",
+    "static/js/2.019189db.chunk.js.map": "/static/js/2.019189db.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.5254b6061bcf84ee6e868f82acdbdeed.js": "/precache-manifest.5254b6061bcf84ee6e868f82acdbdeed.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.d14d5538.chunk.css.map": "/static/css/main.d14d5538.chunk.css.map",
+    "static/js/2.019189db.chunk.js.LICENSE.txt": "/static/js/2.019189db.chunk.js.LICENSE.txt",
+    "static/media/Arial top view of used cars1.png": "/static/media/Arial top view of used cars1.9db0a78d.png",
+    "static/media/Hero-img.jpg": "/static/media/Hero-img.4c504602.jpg",
+    "static/media/aboutus.jpg": "/static/media/aboutus.7de6a02b.jpg",
+    "static/media/businessman-showing-key.jpg": "/static/media/businessman-showing-key.b20a6700.jpg",
+    "static/media/coming_soon.jpeg": "/static/media/coming_soon.b437c65e.jpeg",
+    "static/media/customer-service-woman-working-on-a-phone-call-2022-09-08-19-20-14-utc.jpg": "/static/media/customer-service-woman-working-on-a-phone-call-2022-09-08-19-20-14-utc.f84b8d34.jpg",
+    "static/media/customer-shaking-hands.jpg": "/static/media/customer-shaking-hands.1a415da0.jpg",
+    "static/media/gofer_logo.png": "/static/media/gofer_logo.fbe62116.png",
+    "static/media/joyful-talk-of-the-woman-and-car-showroom-manager-2023-11-27-05-33-28-utc.jpg": "/static/media/joyful-talk-of-the-woman-and-car-showroom-manager-2023-11-27-05-33-28-utc.cb8f6bfe.jpg",
+    "static/media/sold.png": "/static/media/sold.e8bfa8ee.png",
+    "static/media/standing-by-car-talking.jpg": "/static/media/standing-by-car-talking.c3bdaa6f.jpg",
+    "static/media/steering wheel.jpeg": "/static/media/steering wheel.4a0abd09.jpeg",
+    "static/media/test_drive2.jpg": "/static/media/test_drive2.dc3bdd80.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c86a5587.js",
+    "static/js/2.019189db.chunk.js",
+    "static/css/main.d14d5538.chunk.css",
+    "static/js/main.1c9052e4.chunk.js"
+  ]
+}
