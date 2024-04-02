@@ -155,7 +155,7 @@ function Header() {
           </Link>
         </span>
         {/*  ~~V~~ Login / Register link ~~V~~ */}
-        <span className={styles.nav_bottom_right_container}>
+        {/* <span className={styles.nav_bottom_right_container}>
           {state.token ? (
             <span
               className={`${styles.nav_item_btn} ${
@@ -191,7 +191,7 @@ function Header() {
             />
           </Modal>
           
-        </span>
+        </span> */}
       </nav>
     </div>
   );
