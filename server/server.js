@@ -21,15 +21,6 @@ const {
 
 app.use(express.static(path.join(__dirname, '../build')))
 
-app.get('/', async (req, res) => {
-    try {
-        res.sendFile(path.join(__dirname, '../build/index.html'));
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server error');
-    }
-});
-
 //endpoints
 const {
   getInventory,
