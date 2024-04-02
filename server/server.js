@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(fileUpload());
 
 const {
-  REACT_APP_BUCKET_NAME,
-  REACT_APP_REGION,
-  REACT_APP_SECRET_ACCESS_KEY,
-  REACT_APP_ACCESS_KEY_ID,
+  S3_BUCKET_NAME,
+  S3_REGION,
+  S3_SECRET_ACCESS_KEY,
+  S3_ACCESS_KEY_ID,
 } = process.env;
 
 app.use(express.static(path.join(__dirname, '../build')))
@@ -52,18 +52,18 @@ app.post("/upload_image", async (req, res) => {
     return res.status(400).send("No files were uploaded.");
   }
   const { file } = req.files;
-
+  console.log(S3_BUCKET_NAME)
   AWS.config.update({
-    accessKeyId: REACT_APP_ACCESS_KEY_ID,
-    secretAccessKey: REACT_APP_SECRET_ACCESS_KEY,
+    accessKeyId: S3_ACCESS_KEY_ID,
+    secretAccessKey: S3_SECRET_ACCESS_KEY,
   });
   const s3 = new AWS.S3({
-    params: { Bucket: REACT_APP_BUCKET_NAME },
-    region: REACT_APP_REGION,
+    params: { Bucket: S3_BUCKET_NAME },
+    region: S3_REGION,
   });
 
   const params = {
-    Bucket: REACT_APP_BUCKET_NAME,
+    Bucket: S3_BUCKET_NAME,
     Key: file.name,
     Body: file.data,
   };
