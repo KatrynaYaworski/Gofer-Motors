@@ -1,15 +1,17 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import styles from "./Login.module.css";
 import AuthContext from '../../store/authContext';
 
-const Login = ({ closeModal }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
   const [error, setError] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('')
   const { dispatch } = useContext(AuthContext);
+  const nav = useNavigate()
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -29,8 +31,7 @@ const Login = ({ closeModal }) => {
       .post(register ? "/register" : "/login", body)
       .then((res) => {
         dispatch({ type: "LOGIN", payload: res.data });
-        console.log(res.data)
-        closeModal();
+        nav('/')
       })
       .catch((err) => {
         console.error(err);

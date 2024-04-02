@@ -11,6 +11,7 @@ import Contact from "./Components/ContactUs/ContactUs"
 import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyPolicy";
 import Footer from "./Components/Footer/Footer";
 import Financing from "./Components/Financing/Financing"
+import Login from "./Components/Login/Login";
 
 //ICONS
 // import "slick-carousel/slick/slick.css";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacyp" element={<PrivacyPolicy />} />
         <Route key="financing" path="/financing" element={<Financing />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </div>
