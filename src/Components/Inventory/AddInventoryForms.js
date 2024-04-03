@@ -381,9 +381,6 @@ const AddInventoryForms = ({ closeModal, getCars, cars }) => {
     <span className={styles.new_car_container}>
       <h1 className={styles.new_car_title}> Add Inventory </h1>
       <span className={styles.alert_message}>
-        **for now we must ensure the make and model mirrors EXACTLY like one
-        that is already found in the DB since the image URL is temporarily
-        rendered dynamically**
       </span>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {formReturn}
