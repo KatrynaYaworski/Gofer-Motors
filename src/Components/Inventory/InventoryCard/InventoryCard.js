@@ -64,7 +64,7 @@ function InventoryCard({ car, getCars }) {
           <hr />
           <span className="contact_container">
             <a href={`tel:${phoneNumber}`} className="phone-number">
-              (956)-258-5021
+              (956)-533-8752
             </a>
 
             <Link to="/contact" style={{ textDecoration: "none" }}>
