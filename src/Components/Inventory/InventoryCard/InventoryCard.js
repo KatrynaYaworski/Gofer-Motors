@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function InventoryCard({ car, getCars }) {
   const { state } = useContext(AuthContext);
 
-  const phoneNumber = "+9562585021";
+  const phoneNumber = "+9565338752";
   const handleEditClick = () => {
     // event.stopPropagation();
     axios
