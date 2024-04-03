@@ -45,18 +45,17 @@ app.post("/upload_image", async (req, res) => {
     return res.status(400).send("No files were uploaded.");
   }
   const { file } = req.files;
-  console.log(process.env)
   AWS.config.update({
-    accessKeyId: S3_ACCESS_KEY_ID,
-    secretAccessKey: S3_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
   });
   const s3 = new AWS.S3({
-    params: { Bucket: S3_BUCKET_NAME },
-    region: S3_REGION,
+    params: { Bucket: process.env.S3_BUCKET_NAME },
+    region: process.env.S3_REGION,
   });
 
   const params = {
-    Bucket: S3_BUCKET_NAME,
+    Bucket: process.env.S3_BUCKET_NAME,
     Key: file.name,
     Body: file.data,
   };

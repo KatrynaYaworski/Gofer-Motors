@@ -57,7 +57,7 @@ function InventoryCard({ car, getCars }) {
         <span className="car_body_type">{car.body_type}</span>
         <span className="car_miles_price_container">
           <span className="car_miles">{car.mileage} mi</span>
-          <span className="car_price">${car.sticker_price} Cash Price</span>
+          <span className="car_price">${car.sticker_price} Down Payment</span>
           {/* <span className="cash_price"></span> */}
         </span>
         <span>

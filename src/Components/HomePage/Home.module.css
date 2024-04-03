@@ -163,13 +163,13 @@
   justify-content: space-evenly;
   align-items: center;
   /* padding: 2vh 0; */
-  height: 90vh;
+  padding: 5vw 0;
   width: 100vw;
 }
 
 .line_box{
   padding: 10% .2vw;
-  height: 55%;
+  height: 35vh;
   border: 1px solid #ffffff;
 }
 
